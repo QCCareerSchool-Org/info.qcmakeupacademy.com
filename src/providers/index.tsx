@@ -2,7 +2,8 @@ import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adap
 import { cookies } from 'next/headers';
 import { FC, PropsWithChildren } from 'react';
 
-import { GeoLocation, GeoLocationProvider, isGeoLocation } from './geoLocation';
+import { GeoLocation, isGeoLocation } from '../lib/geoLocation';
+import { GeoLocationProvider } from './geoLocation';
 import { ScreenWidthProvider } from './screenWidth';
 
 const getCookieGeoLocation = (cookieStore: ReadonlyRequestCookies): GeoLocation | undefined => {

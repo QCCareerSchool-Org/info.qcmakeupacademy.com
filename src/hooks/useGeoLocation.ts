@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import type { GeoLocation } from '@/providers/geoLocation';
+import type { GeoLocation } from '@/lib/geoLocation';
 import { GeoLocationContext } from '@/providers/geoLocation';
 
 export const useGeoLocation = (): GeoLocation => {
