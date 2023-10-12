@@ -1,0 +1,15 @@
+.phoneNumber {
+  font-size: 1.5rem;
+}
+
+.phoneNumber a {
+  text-decoration: none;
+}
+
+.small {
+  font-size: 0.75rem;
+}
+
+.muted {
+  color: #828282;
+}
