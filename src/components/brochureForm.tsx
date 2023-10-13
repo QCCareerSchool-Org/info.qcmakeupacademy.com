@@ -21,7 +21,7 @@ export const BrochureForm: FC<Props> = ({ buttonText = 'Get the Catalog' }) => {
         <input type="text" name="firstName" id={`${id}firstName`} className="form-control" autoComplete="given-name" />
       </div>
       <div className="mb-3">
-        <label htmlFor={`${id}firstName`} className="form-label">Email</label>
+        <label htmlFor={`${id}emailAddress`} className="form-label">Email</label>
         <input type="email" name="emailAddress" id={`${id}emailAddress`} className="form-control" autoComplete="email" />
       </div>
       <input type="hidden" name="lastName" />
