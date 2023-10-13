@@ -16,25 +16,25 @@ export const HowYourCourseWorksSection: FC = () => {
 
   return (
     <section>
-      <div className="container">
-        <h2 className="h1 text-center mb-5">How Your Course Works</h2>
+      <div className="container text-center">
+        <h2 className="h1 mb-5">How Your Course Works</h2>
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-4 mb-5 mb-lg-0">
-            <div className="mb-3 text-center text-xl-start">
+            <div className="mb-3">
               <BiBookAlt size={iconSize} />
             </div>
             <h3>Enroll Online &amp; Access Your{xlOrGreater ? <br /> : ' '}Course Materials</h3>
             Once you're a member of the QC family, you'll have lifetime access to all the tools and resources available to QC students. This includes discounts on industry products and so much more! You'll receive online access to your materials in 48 hours.
           </div>
           <div className="col-12 col-md-10 col-lg-4 mb-5 mb-lg-0">
-            <div className="mb-3 text-center text-xl-start">
+            <div className="mb-3">
               <BsMegaphone size={iconSize} />
             </div>
             <h3>Complete Assignment &amp;{lgOrGreater ? <br /> : ' '}Receive Feedback</h3>
             Complete your assignments and upload them to the Online Student Center. Your tutor will review your work and provide you with a grade along with detailed audio feedback. You'll review your tutor's advice to improve your skills for the next unit.
           </div>
           <div className="col-12 col-md-10 col-lg-4">
-            <div className="mb-3 text-center text-xl-start">
+            <div className="mb-3">
               <GrCertificate size={iconSize} />
             </div>
             <h3>Graduate &amp; Become a{lgOrGreater ? <br /> : ' '}Certified Makeup Artist</h3>

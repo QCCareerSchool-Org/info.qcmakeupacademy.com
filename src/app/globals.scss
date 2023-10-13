@@ -67,6 +67,7 @@ $container-padding-x: 3rem;
 @import "~bootstrap/scss/utilities/api";
 
 $section-padding: 3rem;
+$section-padding-lg: 4rem;
 
 html { overflow-y: scroll; }
 
@@ -98,6 +99,28 @@ section > div.container {
 .mb-s { margin-bottom: $section-padding; }
 .ms-s { margin-left: $section-padding; }
 .me-s { margin-right: $section-padding; }
+
+@media only screen and (min-width: 992px) {
+  section {
+    padding: $section-padding-lg 0;
+  }
+
+  .p-s { padding: $section-padding-lg }
+  .py-s { padding-top: $section-padding-lg; padding-bottom: $section-padding-lg; }
+  .px-s { padding-left: $section-padding-lg; padding-right: $section-padding-lg; }
+  .pt-s { padding-top: $section-padding-lg; }
+  .pb-s { padding-bottom: $section-padding-lg; }
+  .ps-s { padding-left: $section-padding-lg; }
+  .pe-s { padding-right: $section-padding-lg; }
+
+  .m-s { margin: $section-padding-lg }
+  .my-s { margin-top: $section-padding-lg; margin-bottom: $section-padding-lg; }
+  .mx-s { margin-left: $section-padding-lg; margin-right: $section-padding-lg; }
+  .mt-s { margin-top: $section-padding-lg; }
+  .mb-s { margin-bottom: $section-padding-lg; }
+  .ms-s { margin-left: $section-padding-lg; }
+  .me-s { margin-right: $section-padding-lg; }
+}
 
 .serif { font-family: $headings-font-family; }
 
