@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { FC, PropsWithChildren } from 'react';
 
 import { GeoLocation, isGeoLocation } from '../lib/geoLocation';
+import { CaptchaProvider } from './captchaProvider';
 import { GeoLocationProvider } from './geoLocation';
 import { ScreenWidthProvider } from './screenWidth';
 import { ScrollPositionProvider } from './scrollPosition';
@@ -19,12 +20,14 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
   const cookieGeoLocation = getCookieGeoLocation(cookieStore);
 
   return (
-    <ScrollPositionProvider>
-      <ScreenWidthProvider>
-        <GeoLocationProvider storedValue={cookieGeoLocation}>
-          {children}
-        </GeoLocationProvider>
-      </ScreenWidthProvider>
-    </ScrollPositionProvider>
+    <CaptchaProvider key="6LerpE0hAAAAACCaZBtfFpTIj6qbdvZrMupjnmbL">
+      <ScrollPositionProvider>
+        <ScreenWidthProvider>
+          <GeoLocationProvider storedValue={cookieGeoLocation}>
+            {children}
+          </GeoLocationProvider>
+        </ScreenWidthProvider>
+      </ScrollPositionProvider>
+    </CaptchaProvider>
   );
 };

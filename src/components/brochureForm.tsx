@@ -1,21 +1,30 @@
 'use client';
 
-import { useId } from 'react';
+import { useCallback, useId, useState } from 'react';
 import type { FC, FormEventHandler } from 'react';
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 type Props = {
+  action: string;
   buttonText?: string;
 };
 
-export const BrochureForm: FC<Props> = ({ buttonText = 'Get the Catalog' }) => {
+export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog' }) => {
   const id = useId();
+  const [ token, setToken ] = useState<string>();
+  const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
+
+  const onVerify = useCallback((t: string): void => {
+    setToken(t);
+  }, []);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = () => {
-    //
+    console.log(token);
+    setRefreshReCaptcha(r => !r);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} action={action} method="post">
       <div className="mb-3">
         <label htmlFor={`${id}firstName`} className="form-label">Name</label>
         <input type="text" name="firstName" id={`${id}firstName`} className="form-control" autoComplete="given-name" />
@@ -34,6 +43,7 @@ export const BrochureForm: FC<Props> = ({ buttonText = 'Get the Catalog' }) => {
         </div>
       </div>
       <button className="btn btn-primary">{buttonText}</button>
+      <GoogleReCaptcha onVerify={onVerify} refreshReCaptcha={refreshReCaptcha} />
     </form>
   );
 };

@@ -28,7 +28,7 @@ export const HeroSection: FC = () => {
           <div className="col-12 col-lg-6">
             <BrochureWrapper>
               <h1 className="h4">Get Started with a Free Course Catalog</h1>
-              <BrochureForm />
+              <BrochureForm action="https://captcha.qccareerschool.com/ba0593c9-3b5c-11ed-a5a8-bc764e017ab0" />
               {!lgOrGreater && (
                 <div className="d-lg-none mt-4">
                   <NathanVideo />
