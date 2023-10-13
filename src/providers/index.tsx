@@ -20,7 +20,7 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
   const cookieGeoLocation = getCookieGeoLocation(cookieStore);
 
   return (
-    <CaptchaProvider key="6LerpE0hAAAAACCaZBtfFpTIj6qbdvZrMupjnmbL">
+    <CaptchaProvider reCaptchaKey="6LerpE0hAAAAACCaZBtfFpTIj6qbdvZrMupjnmbL">
       <ScrollPositionProvider>
         <ScreenWidthProvider>
           <GeoLocationProvider storedValue={cookieGeoLocation}>
