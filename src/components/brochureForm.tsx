@@ -24,6 +24,7 @@ export const BrochureForm: FC<Props> = ({ buttonText = 'Get the Catalog' }) => {
         <label htmlFor={`${id}firstName`} className="form-label">Email</label>
         <input type="email" name="emailAddress" id={`${id}emailAddress`} className="form-control" autoComplete="email" />
       </div>
+      <input type="hidden" name="lastName" />
       <div className="mb-3">
         <div className="form-check">
           <input className="form-check-input" type="checkbox" value="" id={`${id}emailOptIn`} />
