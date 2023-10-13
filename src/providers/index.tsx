@@ -5,6 +5,7 @@ import { FC, PropsWithChildren } from 'react';
 import { GeoLocation, isGeoLocation } from '../lib/geoLocation';
 import { GeoLocationProvider } from './geoLocation';
 import { ScreenWidthProvider } from './screenWidth';
+import { ScrollPositionProvider } from './scrollPosition';
 
 const getCookieGeoLocation = (cookieStore: ReadonlyRequestCookies): GeoLocation | undefined => {
   const cookieValue = cookieStore.get('location');
@@ -18,10 +19,12 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
   const cookieGeoLocation = getCookieGeoLocation(cookieStore);
 
   return (
-    <ScreenWidthProvider>
-      <GeoLocationProvider storedValue={cookieGeoLocation}>
-        {children}
-      </GeoLocationProvider>
-    </ScreenWidthProvider>
+    <ScrollPositionProvider>
+      <ScreenWidthProvider>
+        <GeoLocationProvider storedValue={cookieGeoLocation}>
+          {children}
+        </GeoLocationProvider>
+      </ScreenWidthProvider>
+    </ScrollPositionProvider>
   );
 };

@@ -16,6 +16,8 @@ $border-radius-xxl: 0;
 
 $form-check-input-border-radius: 0;
 
+$container-padding-x: 3rem;
+
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/variables-dark";
@@ -64,6 +66,8 @@ $form-check-input-border-radius: 0;
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "~bootstrap/scss/utilities/api";
 
+$section-padding: 3rem;
+
 html { overflow-y: scroll; }
 
 .btn { text-transform: uppercase; }
@@ -72,11 +76,32 @@ html { overflow-y: scroll; }
 section {
   position: relative;
   overflow: hidden;
-  padding: 3rem 0;
+  padding: $section-padding 0;
 }
 
 section > div.container {
   position: relative; /* so that if we use a cover image, the content will display on top */
 }
 
+.p-s { padding: $section-padding }
+.py-s { padding-top: $section-padding; padding-bottom: $section-padding; }
+.px-s { padding-left: $section-padding; padding-right: $section-padding; }
+.pt-s { padding-top: $section-padding; }
+.pb-s { padding-bottom: $section-padding; }
+.ps-s { padding-left: $section-padding; }
+.pe-s { padding-right: $section-padding; }
+
+.m-s { margin: $section-padding }
+.my-s { margin-top: $section-padding; margin-bottom: $section-padding; }
+.mx-s { margin-left: $section-padding; margin-right: $section-padding; }
+.mt-s { margin-top: $section-padding; }
+.mb-s { margin-bottom: $section-padding; }
+.ms-s { margin-left: $section-padding; }
+.me-s { margin-right: $section-padding; }
+
 .serif { font-family: $headings-font-family; }
+
+h1, .h1 { font-size: 2.625rem }
+h2, .h2 { font-size: 2rem }
+h3, .h3 { font-size: 1.625rem }
+h4, .h4 { font-size: 1.375rem }

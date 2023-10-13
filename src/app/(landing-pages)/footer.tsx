@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from './footer.module.css';
+import styles from './footer.module.scss';
 import { TelephoneLink } from './telephoneLink';
 
 export const Footer: FC = () => (
