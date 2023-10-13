@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { FC } from 'react';
 
 import styles from './footer.module.scss';
@@ -13,8 +12,6 @@ export const Footer: FC = () => (
         <p className={`${styles.small} ${styles.muted}`}>&copy; {new Date().getFullYear()} QC Makeup Academy</p>
         <p className={styles.small}><a style={{ color: 'inherit', textDecoration: 'none' }} href="https://www.qcmakeupacademy.com/terms.html">Privacy Policy</a></p>
       </div>
-      <Link href="/makeup-artisty-course-catalog">MZ</Link>
-      <Link href="/airbrush-makeup-course-catalog">AB</Link>
     </section>
   </footer>
 );
