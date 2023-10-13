@@ -10,7 +10,7 @@ import { TestimonialSection } from './testimonial-section';
 
 export const metadata: Metadata = {
   title: 'Get Started with a Free Course Catalog - QC Makeup Academy',
-  description: '....................',
+  description: 'Start your MUA career with our flexible online makeup classes. Download our course catalog to learn more about QC makeup school.',
 };
 
 const MakeupArtistryPage: FC = () => {
