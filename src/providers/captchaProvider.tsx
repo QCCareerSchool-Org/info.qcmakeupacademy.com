@@ -4,11 +4,11 @@ import { FC, PropsWithChildren } from 'react';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 type Props = {
-  reCaptchaKey: string;
+  reCaptchaKey?: string;
 };
 
 export const CaptchaProvider: FC<PropsWithChildren<Props>> = ({ reCaptchaKey, children }) => (
-  <GoogleReCaptchaProvider reCaptchaKey={reCaptchaKey}>
+  <GoogleReCaptchaProvider reCaptchaKey={reCaptchaKey ?? ''}>
     {children}
   </GoogleReCaptchaProvider>
 );
