@@ -24,7 +24,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
       </head>
       <body>
-        {process.env.GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.GOOGLE_ANALYTICS_ID} />}
+        {process.env.GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.GOOGLE_ANALYTICS_ID} adsId={process.env.GOOGLE_ADS_ID} />}
         <Providers>
           {children}
         </Providers>
