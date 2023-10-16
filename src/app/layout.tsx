@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { FC, PropsWithChildren } from 'react';
 
-import { GoogleAnalytics } from '@/components/googleAnalytics';
-import { TrustPulse } from '@/components/trustPulse';
+import { Bing } from '@/components/scripts/bing';
+import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
+import { Pardot } from '@/components/scripts/pardot';
+import { TrustPulse } from '@/components/scripts/trustPulse';
 import { Providers } from '@/providers';
 
 import './globals.scss';
@@ -26,7 +28,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
         <Providers>
           {children}
         </Providers>
-        {process.env.TRUSTPULSE_ID && <TrustPulse id={process.env.TRUSTPULSE_ID} />}
+        {process.env.PARDOT_ACCOUNT_ID && process.env.PARDOT_CAMPAIGN_ID && <Pardot accountId={process.env.PARDOT_ACCOUNT_ID} campaignId={process.env.PARDOT_CAMPAIGN_ID} />}
+        {process.env.BING_ID && <Bing id={process.env.BING_ID} />}
+        {process.env.TRUSTPULSE_ID && <TrustPulse id={parseInt(process.env.TRUSTPULSE_ID, 10)} />}
       </body>
     </html>
   );
