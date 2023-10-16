@@ -15,12 +15,14 @@ const getCookieGeoLocation = (cookieStore: ReadonlyRequestCookies): GeoLocation 
   }
 };
 
+const reCaptchaKey = process.env.RECAPTCHA_KEY;
+
 export const Providers: FC<PropsWithChildren> = ({ children }) => {
   const cookieStore = cookies();
   const cookieGeoLocation = getCookieGeoLocation(cookieStore);
 
   return (
-    <CaptchaProvider reCaptchaKey="6LerpE0hAAAAACCaZBtfFpTIj6qbdvZrMupjnmbL">
+    <CaptchaProvider reCaptchaKey={reCaptchaKey}>
       <ScrollPositionProvider>
         <ScreenWidthProvider>
           <GeoLocationProvider storedValue={cookieGeoLocation}>
