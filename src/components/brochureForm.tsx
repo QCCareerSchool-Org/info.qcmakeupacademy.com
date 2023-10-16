@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useCallback, useId, useRef, useState } from 'react';
 import type { FC, FormEventHandler } from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
@@ -17,6 +18,7 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
   const emailOptInRef = useRef<HTMLInputElement>(null);
   const [ token, setToken ] = useState<string>();
   const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
+  const router = useRouter();
 
   const onVerify = useCallback((t: string): void => {
     setToken(t);
@@ -40,9 +42,13 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
       method: form.method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
-    }).then(response => {
+    }).then(async response => {
       if (!response.ok) {
         throw Error(response.statusText);
+      }
+      const location = response.headers.get('location');
+      if (location) {
+        return router.push(location);
       }
     }).catch(err => {
       console.error(err);
