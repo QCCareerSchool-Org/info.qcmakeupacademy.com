@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import { FC, PropsWithChildren } from 'react';
 
 import { Bing } from '@/components/scripts/bing';
+import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
 import { Pardot } from '@/components/scripts/pardot';
+import { Tiktok } from '@/components/scripts/tiktok';
 import { TrustPulse } from '@/components/scripts/trustPulse';
 import { Providers } from '@/providers';
 
 import './globals.scss';
-import { Facebook } from '@/components/scripts/facebook';
-import { Tiktok } from '@/components/scripts/tiktok';
 
 export const metadata: Metadata = {
   title: 'QC Makeup Academy',
