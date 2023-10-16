@@ -8,6 +8,8 @@ import { TrustPulse } from '@/components/scripts/trustPulse';
 import { Providers } from '@/providers';
 
 import './globals.scss';
+import { Facebook } from '@/components/scripts/facebook';
+import { Tiktok } from '@/components/scripts/tiktok';
 
 export const metadata: Metadata = {
   title: 'QC Makeup Academy',
@@ -25,6 +27,8 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
       </head>
       <body>
         {process.env.GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.GOOGLE_ANALYTICS_ID} adsId={process.env.GOOGLE_ADS_ID} />}
+        {process.env.FACEBOOK_ID && <Facebook id={process.env.FACEBOOK_ID} />}
+        {process.env.TIKTOK_ID && <Tiktok id={process.env.TIKTOK_ID} />}
         <Providers>
           {children}
         </Providers>
