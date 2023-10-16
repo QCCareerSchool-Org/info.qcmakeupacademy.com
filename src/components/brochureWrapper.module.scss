@@ -5,4 +5,14 @@
   @media only screen and (min-width: 992px) {
     background: linear-gradient(180deg, rgba(0,0,0,1) 67%, rgba(0,0,0,0.67) 100%);
   }
+  color: white;
+}
+
+.white {
+  background: #f8f8f8;
+  color: black;
+  // background: linear-gradient(180deg, rgba(0,0,0,1) 33%, rgba(0,0,0,0.67) 67%);
+  // @media only screen and (min-width: 992px) {
+  //   background: linear-gradient(180deg, rgba(0,0,0,1) 67%, rgba(0,0,0,0.67) 100%);
+  // }
 }
