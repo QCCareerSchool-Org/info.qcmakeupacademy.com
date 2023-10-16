@@ -7,10 +7,11 @@ import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 type Props = {
   action: string;
+  successLocation: string;
   buttonText?: string;
 };
 
-export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog' }) => {
+export const BrochureForm: FC<Props> = ({ action, successLocation, buttonText = 'Get the Catalog' }) => {
   const id = useId();
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
@@ -46,10 +47,7 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
       if (!response.ok) {
         throw Error(response.statusText);
       }
-      const location = response.headers.get('location');
-      if (location) {
-        return router.push(location);
-      }
+      return router.push(successLocation);
     }).catch(err => {
       console.error(err);
     }).finally(() => {
