@@ -1,17 +1,15 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useCallback, useId, useRef, useState } from 'react';
 import type { FC, FormEventHandler } from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 type Props = {
   action: string;
-  successLocation: string;
   buttonText?: string;
 };
 
-export const BrochureForm: FC<Props> = ({ action, successLocation, buttonText = 'Get the Catalog' }) => {
+export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog' }) => {
   const id = useId();
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
@@ -19,44 +17,20 @@ export const BrochureForm: FC<Props> = ({ action, successLocation, buttonText = 
   const emailOptInRef = useRef<HTMLInputElement>(null);
   const [ token, setToken ] = useState<string>();
   const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
-  const router = useRouter();
 
   const onVerify = useCallback((t: string): void => {
     setToken(t);
   }, []);
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
-    e.preventDefault();
-    console.log(token);
-    const form = e.target as HTMLFormElement;
-
-    const body = {
-      'firstName': firstNameRef.current?.value,
-      'lastName': lastNameRef.current?.value,
-      'emailAddress': emailAddressRef.current?.value,
-      'g-recaptcha-response': token,
-      'testGroup': 1,
-      'school': 'QC Makeup Academy',
-    };
-
-    fetch(form.action, {
-      method: form.method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    }).then(async response => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return router.push(successLocation);
-    }).catch(err => {
-      console.error(err);
-    }).finally(() => {
-      setRefreshReCaptcha(r => !r);
-    });
+  const handleSubmit: FormEventHandler<HTMLFormElement> = () => {
+    // setRefreshReCaptcha(r => !r);
   };
 
   return (
     <form onSubmit={handleSubmit} action={action} method="post">
+      <input type="hidden" name="school" value="QC Makeup Academy" />
+      <input type="hidden" name="testGroup" value="1" />
+      <input type="hidden" name="g-recaptcha-response" value={token} />
       <div className="mb-3">
         <label htmlFor={`${id}firstName`} className="form-label">Name</label>
         <input ref={firstNameRef} type="text" name="firstName" id={`${id}firstName`} className="form-control" autoComplete="given-name" />
