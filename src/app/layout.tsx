@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { FC, PropsWithChildren } from 'react';
 
 import { GoogleAnalytics } from '@/components/googleAnalytics';
+import { TrustPulse } from '@/components/trustPulse';
 import { Providers } from '@/providers';
 
 import './globals.scss';
@@ -25,6 +26,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
         <Providers>
           {children}
         </Providers>
+        {process.env.TRUSTPULSE_ID && <TrustPulse id={process.env.TRUSTPULSE_ID} />}
       </body>
     </html>
   );
