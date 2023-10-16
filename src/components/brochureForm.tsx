@@ -16,7 +16,7 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
   const emailAddressRef = useRef<HTMLInputElement>(null);
   const emailOptInRef = useRef<HTMLInputElement>(null);
   const [ token, setToken ] = useState<string>();
-  const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
+  const [ refreshReCaptcha ] = useState(false);
 
   const onVerify = useCallback((t: string): void => {
     setToken(t);
