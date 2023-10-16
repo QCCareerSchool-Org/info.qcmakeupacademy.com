@@ -19,8 +19,8 @@ export const HeroSection: FC = () => {
   return (
     <section style={{ backgroundColor: '#86081c' }}>
       {lgOrGreater
-        ? <div className="d-none d-lg-block"><Image src={HeroImage} placeholder="blur" alt="woman wearing red" priority fill sizes="100vw" style={{ objectFit: 'cover', objectPosition: '50% 30%' }} /></div>
-        : <div className="d-lg-none"><Image src={HeroMobileImage} placeholder="blur" alt="woman wearing red" priority fill sizes="100vw" style={{ objectFit: 'cover', objectPosition: '50% 0%' }} /></div>
+        ? <div className="d-none d-lg-block"><Image src={HeroImage} placeholder="blur" alt="" priority fill sizes="100vw" style={{ objectFit: 'cover', objectPosition: '50% 30%' }} /></div>
+        : <div className="d-lg-none"><Image src={HeroMobileImage} placeholder="blur" alt="" priority fill sizes="100vw" style={{ objectFit: 'cover', objectPosition: '50% 0%' }} /></div>
       }
       <div className="container">
         <HeaderLogo />
