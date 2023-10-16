@@ -37,8 +37,8 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
       </div>
       <input ref={lastNameRef} type="hidden" name="lastName" />
       <div className="mb-3">
-        <label htmlFor={`${id}emailAddress`} className="form-label">Email</label>
-        <input ref={emailAddressRef} type="email" name="emailAddress" id={`${id}emailAddress`} className="form-control" autoComplete="email" />
+        <label htmlFor={`${id}emailAddress`} className="form-label">Email <span className="text-primary" title="required">*</span></label>
+        <input ref={emailAddressRef} type="email" name="emailAddress" id={`${id}emailAddress`} className="form-control" autoComplete="email" required />
       </div>
       <div className="mb-3">
         <div className="form-check">
