@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from 'next';
+// eslint-disable-next-line camelcase
+import { Open_Sans, Playfair_Display } from 'next/font/google';
 import { FC, PropsWithChildren } from 'react';
 
 import { Bing } from '@/components/scripts/bing';
@@ -17,15 +19,24 @@ export const metadata: Metadata = {
   title: 'QC Makeup Academy',
 };
 
+const openSans = Open_Sans({
+  subsets: [ 'latin' ],
+  variable: '--qc-open-sans',
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: [ 'latin' ],
+  variable: '--qc-playfair-display',
+});
+
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
         {process.env.VWO_ID && <VWO id={parseInt(process.env.VWO_ID, 10)} />}
       </head>
       <body>
