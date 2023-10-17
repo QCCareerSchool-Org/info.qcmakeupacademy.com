@@ -57,7 +57,7 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
       </div>
       <div className="mb-3">
         <div className="form-check">
-          <input ref={emailOptInRef} className="form-check-input" type="checkbox" value="" id={`${id}emailOptIn`} />
+          <input ref={emailOptInRef} type="checkbox" name="emailOptIn" id={`${id}emailOptIn`} className="form-check-input" value="Yes" />
           <label className="form-check-label" htmlFor={`${id}emailOptIn`}>
             I agree to receive additional emails from QC, including promotions, course launches, special offers and more. Unsubscribe anytime!
           </label>
