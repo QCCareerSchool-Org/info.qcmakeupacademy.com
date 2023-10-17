@@ -40,16 +40,23 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {process.env.GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.GOOGLE_ANALYTICS_ID} adsId={process.env.GOOGLE_ADS_ID} />}
         {process.env.VWO_ID && <VWO id={parseInt(process.env.VWO_ID, 10)} />}
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=QEMKdlwA73" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=QEMKdlwA73" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=QEMKdlwA73" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg?v=QEMKdlwA73" color="#5bbad5" />
+        <link rel="shortcut icon" href="/favicon.ico?v=QEMKdlwA73" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#000000" />
       </head>
       <body>
-        {process.env.GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.GOOGLE_ANALYTICS_ID} adsId={process.env.GOOGLE_ADS_ID} />}
-        {process.env.FACEBOOK_ID && <Facebook id={process.env.FACEBOOK_ID} />}
-        {process.env.TIKTOK_ID && <Tiktok id={process.env.TIKTOK_ID} />}
         <Providers>
           {children}
         </Providers>
+        {process.env.FACEBOOK_ID && <Facebook id={process.env.FACEBOOK_ID} />}
+        {process.env.TIKTOK_ID && <Tiktok id={process.env.TIKTOK_ID} />}
         {process.env.PARDOT_ACCOUNT_ID && process.env.PARDOT_CAMPAIGN_ID && <Pardot accountId={process.env.PARDOT_ACCOUNT_ID} campaignId={process.env.PARDOT_CAMPAIGN_ID} />}
         {process.env.BING_ID && <Bing id={process.env.BING_ID} />}
         {process.env.TRUSTPULSE_ID && <TrustPulse id={parseInt(process.env.TRUSTPULSE_ID, 10)} />}
