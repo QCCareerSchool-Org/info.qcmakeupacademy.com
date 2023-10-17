@@ -107,7 +107,7 @@ section > div.container {
 .ms-s { margin-left: $section-padding; }
 .me-s { margin-right: $section-padding; }
 
-@media only screen and (min-width: 992px) {
+@include media-breakpoint-up(lg) {
   section {
     padding: $section-padding-lg 0;
   }
