@@ -3,14 +3,25 @@
 import { useCallback, useId, useRef, useState } from 'react';
 import type { FC, FormEventHandler } from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useGeoLocation } from '@/hooks/useGeoLocation';
 
 type Props = {
   action: string;
   buttonText?: string;
+  gclid?: string;
+  msclkid?: string;
+  marketing: {
+    source?: string;
+    medium?: string;
+    campaign?: string;
+    content?: string;
+    term?: string;
+  };
 };
 
-export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog' }) => {
+export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog', gclid, msclkid }) => {
   const id = useId();
+  const geoLocation = useGeoLocation();
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const emailAddressRef = useRef<HTMLInputElement>(null);
@@ -31,6 +42,10 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
       <input type="hidden" name="school" value="QC Makeup Academy" />
       <input type="hidden" name="testGroup" value="1" />
       <input type="hidden" name="g-recaptcha-response" value={token} />
+      <input type="hidden" name="countryCode" value={geoLocation.countryCode} />
+      {geoLocation.provinceCode && <input type="hidden" name="provinceCode" value={geoLocation.provinceCode} />}
+      {gclid && <input type="hidden" name="gclid" value={gclid} />}
+      {msclkid && <input type="hidden" name="gclid" value={msclkid} />}
       <div className="mb-3">
         <label htmlFor={`${id}firstName`} className="form-label">Name</label>
         <input ref={firstNameRef} type="text" name="firstName" id={`${id}firstName`} className="form-control" autoComplete="given-name" />
