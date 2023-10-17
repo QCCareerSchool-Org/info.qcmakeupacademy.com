@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import type { FC } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { type FC } from 'react';
 
 import HeroMobileImage from './hero-mobile.jpg';
 import HeroImage from './hero.jpg';
@@ -16,19 +17,24 @@ type Props = {
 };
 
 export const HeroSection: FC<Props> = ({ variant }) => {
+  const searchParams = useSearchParams();
   const screenWidth = useScreenWidth();
-
   const lgOrGreater = screenWidth >= 992;
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const gclid = urlParams.get('gclid') ?? undefined;
-  const msclkid = urlParams.get('msclkid') ?? undefined;
   const marketing = {
-    source: urlParams.get('utm_source') ?? undefined,
-    medium: urlParams.get('utm_medium') ?? undefined,
-    campaign: urlParams.get('utm_campaign') ?? undefined,
-    content: urlParams.get('utm_content') ?? undefined,
-    term: urlParams.get('utm_term') ?? undefined,
+    gclid: searchParams.get('gclid') ?? undefined,
+    msclkid: searchParams.get('msclkid') ?? undefined,
+    source: searchParams.get('utm_source') ?? undefined,
+    medium: searchParams.get('utm_medium') ?? undefined,
+    campaign: searchParams.get('utm_campaign') ?? undefined,
+    content: searchParams.get('utm_content') ?? undefined,
+    term: searchParams.get('utm_term') ?? undefined,
+  };
+
+  const defaultValues = {
+    firstName: searchParams.get('firstName') ?? undefined,
+    lastName: searchParams.get('lastName') ?? undefined,
+    emailAddress: searchParams.get('emailAddress') ?? undefined,
   };
 
   return (
@@ -43,7 +49,11 @@ export const HeroSection: FC<Props> = ({ variant }) => {
           <div className="col-12 col-lg-6">
             <BrochureWrapper variant={variant}>
               <h1 className="h3">Get Started with a Free Course Catalog</h1>
-              <BrochureForm action="https://captcha.qccareerschool.com/ba0593c9-3b5c-11ed-a5a8-bc764e017ab0" gclid={gclid} msclkid={msclkid} marketing={marketing} />
+              <BrochureForm
+                action="https://captcha.qccareerschool.com/ba0593c9-3b5c-11ed-a5a8-bc764e017ab0"
+                marketing={marketing}
+                defaultValues={defaultValues}
+              />
               {!lgOrGreater && (
                 <div className="d-lg-none mt-4">
                   <NathanVideo />
