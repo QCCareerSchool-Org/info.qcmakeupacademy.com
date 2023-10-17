@@ -19,7 +19,7 @@ type Props = {
   };
 };
 
-export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog', gclid, msclkid }) => {
+export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog', gclid, msclkid, marketing }) => {
   const id = useId();
   const geoLocation = useGeoLocation();
   const firstNameRef = useRef<HTMLInputElement>(null);
@@ -46,6 +46,11 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
       {geoLocation.provinceCode && <input type="hidden" name="provinceCode" value={geoLocation.provinceCode} />}
       {gclid && <input type="hidden" name="gclid" value={gclid} />}
       {msclkid && <input type="hidden" name="gclid" value={msclkid} />}
+      {marketing.source && <input type="hidden" name="utm_source" value={marketing.source} />}
+      {marketing.medium && <input type="hidden" name="utm_medium" value={marketing.medium} />}
+      {marketing.campaign && <input type="hidden" name="utm_campaign" value={marketing.campaign} />}
+      {marketing.content && <input type="hidden" name="utm_content" value={marketing.content} />}
+      {marketing.term && <input type="hidden" name="utm_term" value={marketing.term} />}
       <div className="mb-3">
         <label htmlFor={`${id}firstName`} className="form-label">Name</label>
         <input ref={firstNameRef} type="text" name="firstName" id={`${id}firstName`} className="form-control" autoComplete="given-name" />
