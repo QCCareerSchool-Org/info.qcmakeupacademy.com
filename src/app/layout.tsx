@@ -20,13 +20,19 @@ export const metadata: Metadata = {
 };
 
 const openSans = Open_Sans({
+  weight: [ '300', '400', '700' ],
+  style: [ 'normal', 'italic' ],
   subsets: [ 'latin' ],
   variable: '--qc-open-sans',
+  display: 'swap',
 });
 
 const playfairDisplay = Playfair_Display({
+  weight: [ '500' ],
+  style: [ 'normal', 'italic' ],
   subsets: [ 'latin' ],
   variable: '--qc-playfair-display',
+  display: 'swap',
 });
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
