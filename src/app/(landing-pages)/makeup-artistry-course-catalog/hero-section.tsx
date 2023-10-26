@@ -12,11 +12,7 @@ import { HeaderLogo } from '@/components/headerLogo';
 import { NathanVideo } from '@/components/nathanVideo';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 
-type Props = {
-  variant?: 'black' | 'white';
-};
-
-export const HeroSection: FC<Props> = ({ variant }) => {
+export const HeroSection: FC = () => {
   const searchParams = useSearchParams();
   const screenWidth = useScreenWidth();
   const lgOrGreater = screenWidth >= 992;
@@ -47,7 +43,7 @@ export const HeroSection: FC<Props> = ({ variant }) => {
         <HeaderLogo />
         <div className="row align-items-center">
           <div className="col-12 col-lg-6">
-            <BrochureWrapper variant={variant}>
+            <BrochureWrapper>
               <h1 className="h3">Get Started with a Free Course Catalog</h1>
               <BrochureForm
                 action="https://captcha.qccareerschool.com/ba0593c9-3b5c-11ed-a5a8-bc764e017ab0"
