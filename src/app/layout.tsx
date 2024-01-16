@@ -10,7 +10,6 @@ import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
 import { Pardot } from '@/components/scripts/pardot';
 import { Tiktok } from '@/components/scripts/tiktok';
 import { TrustPulse } from '@/components/scripts/trustPulse';
-import { VWO } from '@/components/scripts/vwo';
 import { Providers } from '@/providers';
 
 import './globals.scss';
@@ -41,7 +40,6 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         {process.env.GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.GOOGLE_ANALYTICS_ID} adsId={process.env.GOOGLE_ADS_ID} />}
-        {process.env.VWO_ID && <VWO id={parseInt(process.env.VWO_ID, 10)} />}
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=QEMKdlwA73" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=QEMKdlwA73" />
