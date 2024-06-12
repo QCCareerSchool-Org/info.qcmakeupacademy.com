@@ -38,7 +38,7 @@ export const Header: FC = () => {
       <div className="container">
         <div className="d-flex justify-content-between">
           {screenWidth >= 400 && <Logo height={18} />}
-          <Link href="#"><button className="btn btn-primary btn-sm py-2">Get the Catalog</button></Link>
+          <Link href="#"><button className="btn btn-primary btn-sm py-2 rounded-0">Get the Catalog</button></Link>
         </div>
       </div>
     </header>

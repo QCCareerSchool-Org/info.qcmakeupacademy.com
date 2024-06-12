@@ -27,9 +27,10 @@ type Props = {
   buttonText?: string;
   marketing?: Marketing;
   defaultValues?: DefaultValues;
+  labels?: boolean;
 };
 
-export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog', marketing, defaultValues }) => {
+export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog', marketing, defaultValues, labels }) => {
   const id = useId();
   const geoLocation = useGeoLocation();
   const [ token, setToken ] = useState<string>();
@@ -58,18 +59,18 @@ export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog'
       {marketing?.content && <input type="hidden" name="utm_content" value={marketing.content} />}
       {marketing?.term && <input type="hidden" name="utm_term" value={marketing.term} />}
       <div className="mb-3">
-        <label htmlFor={`${id}firstName`} className="form-label">Name</label>
-        <input type="text" name="firstName" defaultValue={defaultValues?.firstName} id={`${id}firstName`} className="form-control" autoComplete="given-name" />
+        {labels && <label htmlFor={`${id}firstName`} className="form-label">Name</label>}
+        <input type="text" name="firstName" placeholder={labels ? undefined : 'Name'} defaultValue={defaultValues?.firstName} id={`${id}firstName`} className="form-control" autoComplete="given-name" />
       </div>
       <input type="hidden" name="lastName" defaultValue={defaultValues?.lastName} />
       <div className="mb-3">
-        <label htmlFor={`${id}emailAddress`} className="form-label">Email <span className="text-primary" title="required">*</span></label>
-        <input type="email" name="emailAddress" defaultValue={defaultValues?.emailAddress} id={`${id}emailAddress`} className="form-control" autoComplete="email" required />
+        {labels && <label htmlFor={`${id}emailAddress`} className="form-label">Email <span className="text-primary" title="required">*</span></label>}
+        <input type="email" name="emailAddress" placeholder={labels ? undefined : 'Email Address'} defaultValue={defaultValues?.emailAddress} id={`${id}emailAddress`} className="form-control" autoComplete="email" required />
       </div>
       <div className="mb-3">
         <div className="form-check">
           <input type="checkbox" name="emailOptIn" id={`${id}emailOptIn`} className="form-check-input" value="Yes" />
-          <label htmlFor={`${id}emailOptIn`} className="form-check-label">
+          <label htmlFor={`${id}emailOptIn`} className="form-check-label small">
             I agree to receive additional emails from QC, including promotions, course launches, special offers and more. Unsubscribe anytime!
           </label>
         </div>

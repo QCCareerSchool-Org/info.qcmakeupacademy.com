@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { type FC } from 'react';
+import type { FC } from 'react';
 
-import HeroMobileImage from './hero-mobile.jpg';
-import HeroImage from './hero.jpg';
+import HeroImage from './desktop.jpg';
+import HeroMobileImage from './mobile.jpg';
+import { BackgroundImage } from '@/components/backgroundImage';
 import { BrochureForm } from '@/components/brochureForm';
 import { BrochureWrapper } from '@/components/brochureWrapper';
 import { HeaderLogo } from '@/components/headerLogo';
@@ -35,10 +35,7 @@ export const HeroSection: FC = () => {
 
   return (
     <section style={{ backgroundColor: '#86081c' }}>
-      {lgOrGreater
-        ? <div className="d-none d-lg-block"><Image src={HeroImage} placeholder="blur" alt="" priority fill sizes="100vw" style={{ objectFit: 'cover', objectPosition: '50% 30%' }} /></div>
-        : <div className="d-lg-none"><Image src={HeroMobileImage} placeholder="blur" alt="" priority fill sizes="100vw" style={{ objectFit: 'cover', objectPosition: '50% 0%' }} /></div>
-      }
+      <BackgroundImage desktopSrc={HeroImage} desktopObjectPosition="50% 30%" mobileSrc={HeroMobileImage} mobileObjectPosition="50% 0%" priority />
       <div className="container">
         <HeaderLogo />
         <div className="row align-items-center">
