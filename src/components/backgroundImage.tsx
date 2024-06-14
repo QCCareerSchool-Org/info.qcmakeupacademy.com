@@ -13,7 +13,6 @@ type Props = {
 };
 
 export const BackgroundImage: FC<Props> = memo(({ desktopSrc, mobileSrc, desktopObjectPosition, mobileObjectPosition, priority, breakpoint = 'lg' }) => {
-  console.log('render');
   return (
     <>
       <div className={`d-none d-${breakpoint}-block`}><Part src={desktopSrc} objectPosition={desktopObjectPosition} priority={priority} /></div>
