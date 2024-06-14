@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { FC } from 'react';
 
 export const StartTodaySection: FC = () => (
-  <section>
+  <section className="bg-light">
     <div className="container text-center">
       <div className="row justify-content-center">
         <div className="col-12 col-md-10 col-lg-8 col-xl-6">

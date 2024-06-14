@@ -1,5 +1,4 @@
-@media screen and (max-width: 991.9px) {
-  .section {
-    padding-top: 0;
-  }  
+.section {
+  @media screen and (max-width: 991.9px) { padding-top: 0; }  
+  @media screen and (min-width: 1200px) { min-height: 30rem; }  
 }
