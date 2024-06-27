@@ -9,7 +9,7 @@ type Props = {
   alt?: boolean;
 };
 
-const action = 'http://go.qcmakeupacademy.com/l/947642/2024-06-17/x31bx';
+const action = 'https://go.qcmakeupacademy.com/l/947642/2024-06-17/x31bx';
 
 export const HeroSection: FC<Props> = ({ alt }) => (
   <section className="text-white">
