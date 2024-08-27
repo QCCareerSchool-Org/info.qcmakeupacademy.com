@@ -3,23 +3,43 @@ import { FC } from 'react';
 import { FormWrapper } from './form-wrapper';
 import HeroImage from './hero-reversed.jpg';
 import { BackgroundImage } from '@/components/backgroundImage';
-import { BrochureForm } from '@/components/brochureForm';
+import { BrevoForm } from '@/components/brevoForm';
 
 type Props = {
   alt?: boolean;
+  gclid?: string;
+  msclkid?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
 };
 
-const action = 'https://go.qcmakeupacademy.com/l/947642/2024-06-17/x31bx';
+const brevoListId = 9;
+const brevoEmailTemplateId = 57;
 
-export const HeroSection: FC<Props> = ({ alt }) => (
+export const HeroSection: FC<Props> = props => (
   <section className="text-white">
     <BackgroundImage desktopSrc={HeroImage} desktopObjectPosition="50% 0%" mobileSrc={HeroImage} mobileObjectPosition="100% 50%" priority />
     <div className="container">
       <div className="row justify-content-center mb-4">
         <div className="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mb-4 mb-lg-0">
-          <FormWrapper alt={alt}>
+          <FormWrapper alt={props.alt}>
             <h2 className="h4">Get Your Free Skincare Course Catalog</h2>
-            <BrochureForm action={action} />
+            <BrevoForm
+              successLocation={`${process.env.HOST ?? 'https://www.qcmakeupacademy.com'}/thank-you-learn-makeup-online`}
+              listId={brevoListId}
+              emailTemplateId={brevoEmailTemplateId}
+              gclid={props.gclid}
+              msclkid={props.msclkid}
+              utmSource={props.utmSource}
+              utmMedium={props.utmMedium}
+              utmCampaign={props.utmCampaign}
+              utmContent={props.utmContent}
+              utmTerm={props.utmTerm}
+              placeholders
+            />
           </FormWrapper>
         </div>
         <div className="col-12 col-lg-6 col-xxl-5 text-center text-lg-start">

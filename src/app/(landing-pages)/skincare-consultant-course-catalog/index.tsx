@@ -10,12 +10,19 @@ import { VideoSection } from './video-section';
 
 type Props = {
   alt?: boolean;
+  gclid?: string;
+  msclkid?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
 };
 
-export const SkincareConsultant: FC<Props> = ({ alt }) => {
+export const SkincareConsultant: FC<Props> = props => {
   return (
     <>
-      <HeroSection alt={alt} />
+      <HeroSection alt={props.alt} />
       <VideoSection />
       <CertificationSection />
       <HowYourCourseWorksSection />

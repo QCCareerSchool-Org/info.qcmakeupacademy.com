@@ -7,7 +7,17 @@ import { MakeupKitSection } from './makeup-kit-section';
 import { StartTodaySection } from './start-today-section';
 import { TestimonialSection } from './testimonial-section';
 
-export const MakeupArtistry: FC = () => {
+type Props = {
+  gclid?: string;
+  msclkid?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
+};
+
+export const MakeupArtistry: FC<Props> = () => {
   return (
     <>
       <HeroSection />

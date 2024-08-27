@@ -1,37 +1,32 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import type { FC } from 'react';
 
 import HeroImage from './desktop.jpg';
 import HeroMobileImage from './mobile.jpg';
 import { BackgroundImage } from '@/components/backgroundImage';
-import { BrochureForm } from '@/components/brochureForm';
+import { BrevoForm } from '@/components/brevoForm';
 import { BrochureWrapper } from '@/components/brochureWrapper';
 import { HeaderLogo } from '@/components/headerLogo';
 import { NathanVideo } from '@/components/nathanVideo';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 
-export const HeroSection: FC = () => {
-  const searchParams = useSearchParams();
+type Props = {
+  gclid?: string;
+  msclkid?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
+};
+
+const brevoListId = 9;
+const brevoEmailTemplateId = 57;
+
+export const HeroSection: FC<Props> = props => {
   const screenWidth = useScreenWidth();
   const lgOrGreater = screenWidth >= 992;
-
-  const marketing = {
-    gclid: searchParams.get('gclid') ?? undefined,
-    msclkid: searchParams.get('msclkid') ?? undefined,
-    source: searchParams.get('utm_source') ?? undefined,
-    medium: searchParams.get('utm_medium') ?? undefined,
-    campaign: searchParams.get('utm_campaign') ?? undefined,
-    content: searchParams.get('utm_content') ?? undefined,
-    term: searchParams.get('utm_term') ?? undefined,
-  };
-
-  const defaultValues = {
-    firstName: searchParams.get('firstName') ?? undefined,
-    lastName: searchParams.get('lastName') ?? undefined,
-    emailAddress: searchParams.get('emailAddress') ?? undefined,
-  };
 
   return (
     <section style={{ backgroundColor: '#86081c' }}>
@@ -42,10 +37,18 @@ export const HeroSection: FC = () => {
           <div className="col-12 col-lg-6">
             <BrochureWrapper>
               <h1 className="h3">Get Started with a Free Course Catalog</h1>
-              <BrochureForm
-                action="https://captcha.qccareerschool.com/ba0593c9-3b5c-11ed-a5a8-bc764e017ab0"
-                marketing={marketing}
-                defaultValues={defaultValues}
+              <BrevoForm
+                successLocation={`${process.env.HOST ?? 'https://www.qcmakeupacademy.com'}/thank-you-learn-makeup-online`}
+                listId={brevoListId}
+                emailTemplateId={brevoEmailTemplateId}
+                gclid={props.gclid}
+                msclkid={props.msclkid}
+                utmSource={props.utmSource}
+                utmMedium={props.utmMedium}
+                utmCampaign={props.utmCampaign}
+                utmContent={props.utmContent}
+                utmTerm={props.utmTerm}
+                placeholders
               />
               {!lgOrGreater && (
                 <div className="d-lg-none mt-4">
