@@ -4,6 +4,7 @@ import Image, { StaticImageData } from 'next/image';
 import type { ChangeEventHandler, FC, ReactElement } from 'react';
 import { useCallback, useId, useState } from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { v1 } from 'uuid';
 
 import styles from './index.module.scss';
 import DownloadIcon from '@/components/download.svg';
@@ -51,11 +52,13 @@ export const BrevoForm: FC<Props> = props => {
   }, []);
 
   return (
-    <form action="https://leads.qccareerschool.com" method="post" className={styles.brochureForm}>
+    // <form action="https://leads.qccareerschool.com" method="post" className={styles.brochureForm}>
+    <form action="http://localhost:15011" method="post" className={styles.brochureForm}>
       <input type="hidden" name="g-recaptcha-response" value={token} />
       <input type="hidden" name="school" value="QC Makeup Academy" />
       <input type="hidden" name="successLocation" value={props.successLocation} />
       <input type="hidden" name="listId" value={props.listId} />
+      <input type="hidden" name="nonce" value={v1()} />
       {props.courseCodes?.map(c => <input key={c} type="hidden" name="courseCodes" value={c} />)}
       {typeof props.emailTemplateId !== 'undefined' && <input type="hidden" name="emailTemplateId" value={props.emailTemplateId} />}
       {props.gclid && <input type="hidden" name="gclid" value={props.gclid} />}
