@@ -52,8 +52,7 @@ export const BrevoForm: FC<Props> = props => {
   }, []);
 
   return (
-    // <form action="https://leads.qccareerschool.com" method="post" className={styles.brochureForm}>
-    <form action="http://localhost:15011" method="post" className={styles.brochureForm}>
+    <form action="https://leads.qccareerschool.com" method="post" className={styles.brochureForm}>
       <input type="hidden" name="g-recaptcha-response" value={token} />
       <input type="hidden" name="school" value="QC Makeup Academy" />
       <input type="hidden" name="successLocation" value={props.successLocation} />
