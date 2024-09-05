@@ -52,8 +52,9 @@ export const BrevoForm: FC<Props> = props => {
     setToken(t);
   }, []);
 
-  const handleSubmit: FormEventHandler = () => {
+  const handleSubmit: FormEventHandler = e => {
     if (submitting.current) {
+      e.preventDefault();
       return false;
     }
     submitting.current = true;

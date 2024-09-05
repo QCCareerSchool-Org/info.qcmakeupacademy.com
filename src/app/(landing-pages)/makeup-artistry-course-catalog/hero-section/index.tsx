@@ -38,7 +38,7 @@ export const HeroSection: FC<Props> = props => {
             <BrochureWrapper>
               <h1 className="h3">Get Started with a Free Course Catalog</h1>
               <BrevoForm
-                successLocation={`${process.env.HOST ?? 'https://www.qcmakeupacademy.com'}/thank-you-learn-makeup-online`}
+                successLocation={`${process.env.NEXT_PUBLIC_HOST ?? 'https://www.qcmakeupacademy.com'}/thank-you-learn-makeup-online`}
                 listId={brevoListId}
                 emailTemplateId={brevoEmailTemplateId}
                 gclid={props.gclid}

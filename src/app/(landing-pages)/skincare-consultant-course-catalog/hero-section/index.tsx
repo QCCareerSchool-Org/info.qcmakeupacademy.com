@@ -28,7 +28,7 @@ export const HeroSection: FC<Props> = props => (
           <FormWrapper alt={props.alt}>
             <h2 className="h4">Get Your Free Skincare Course Catalog</h2>
             <BrevoForm
-              successLocation={`${process.env.HOST ?? 'https://www.qcmakeupacademy.com'}/thank-you-learn-makeup-online`}
+              successLocation={`${process.env.NEXT_PUBLIC_HOST ?? 'https://www.qcmakeupacademy.com'}/thank-you-learn-makeup-online`}
               listId={brevoListId}
               emailTemplateId={brevoEmailTemplateId}
               gclid={props.gclid}
