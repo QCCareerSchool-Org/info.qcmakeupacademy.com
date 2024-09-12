@@ -7,7 +7,6 @@ import { FC, PropsWithChildren } from 'react';
 import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
-import { Pardot } from '@/components/scripts/pardot';
 import { Tiktok } from '@/components/scripts/tiktok';
 import { TrustPulse } from '@/components/scripts/trustPulse';
 import { Providers } from '@/providers';
@@ -55,7 +54,6 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
         </Providers>
         {process.env.FACEBOOK_ID && <Facebook id={process.env.FACEBOOK_ID} />}
         {process.env.TIKTOK_ID && <Tiktok id={process.env.TIKTOK_ID} />}
-        {process.env.PARDOT_ACCOUNT_ID && process.env.PARDOT_CAMPAIGN_ID && <Pardot accountId={process.env.PARDOT_ACCOUNT_ID} campaignId={process.env.PARDOT_CAMPAIGN_ID} />}
         {process.env.BING_ID && <Bing id={process.env.BING_ID} />}
         {process.env.TRUSTPULSE_ID && <TrustPulse id={parseInt(process.env.TRUSTPULSE_ID, 10)} />}
       </body>
