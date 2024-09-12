@@ -17,12 +17,13 @@ type Props = {
   utmCampaign?: string;
   utmContent?: string;
   utmTerm?: string;
+  referrer: string | null;
 };
 
 export const SkincareConsultant: FC<Props> = props => {
   return (
     <>
-      <HeroSection alt={props.alt} />
+      <HeroSection alt={props.alt} gclid={props.gclid} msclkid={props.msclkid} utmSource={props.utmSource} utmMedium={props.utmMedium} utmCampaign={props.utmCampaign} utmContent={props.utmContent} utmTerm={props.utmTerm} referrer={props.referrer} />
       <VideoSection />
       <CertificationSection />
       <HowYourCourseWorksSection />

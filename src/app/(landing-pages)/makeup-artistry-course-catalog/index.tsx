@@ -15,12 +15,13 @@ type Props = {
   utmCampaign?: string;
   utmContent?: string;
   utmTerm?: string;
+  referrer: string | null;
 };
 
-export const MakeupArtistry: FC<Props> = () => {
+export const MakeupArtistry: FC<Props> = props => {
   return (
     <>
-      <HeroSection />
+      <HeroSection gclid={props.gclid} msclkid={props.msclkid} utmSource={props.utmSource} utmMedium={props.utmMedium} utmCampaign={props.utmCampaign} utmContent={props.utmContent} utmTerm={props.utmTerm} referrer={props.referrer} />
       <HowYourCourseWorksSection />
       <TestimonialSection />
       <AboutSection />

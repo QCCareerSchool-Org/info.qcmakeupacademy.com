@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
+
 import { SkincareConsultant } from '.';
 import { PageComponent } from '@/app/serverComponent';
 import { getParam } from '@/lib/getParam';
@@ -16,8 +18,10 @@ const SkincareConsultantPage: PageComponent = ({ searchParams }) => {
   const utmCampaign = getParam(searchParams.utm_campaign);
   const utmContent = getParam(searchParams.utm_content);
   const utmTerm = getParam(searchParams.utm_term);
+  const headersList = headers();
+  const referrer = headersList.get('referer');
 
-  return <SkincareConsultant gclid={gclid} msclkid={msclkid} utmSource={utmSource} utmMedium={utmMedium} utmCampaign={utmCampaign} utmContent={utmContent} utmTerm={utmTerm} />;
+  return <SkincareConsultant gclid={gclid} msclkid={msclkid} utmSource={utmSource} utmMedium={utmMedium} utmCampaign={utmCampaign} utmContent={utmContent} utmTerm={utmTerm} referrer={referrer} />;
 };
 
 export default SkincareConsultantPage;

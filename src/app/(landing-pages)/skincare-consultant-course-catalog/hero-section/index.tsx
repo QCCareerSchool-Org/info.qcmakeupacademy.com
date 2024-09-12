@@ -14,6 +14,7 @@ type Props = {
   utmCampaign?: string;
   utmContent?: string;
   utmTerm?: string;
+  referrer: string | null;
 };
 
 const brevoListId = 9;
@@ -39,6 +40,7 @@ export const HeroSection: FC<Props> = props => (
               utmContent={props.utmContent}
               utmTerm={props.utmTerm}
               placeholders
+              referrer={props.referrer}
             />
           </FormWrapper>
         </div>

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
 
 import { MakeupArtistry } from '.';
 import { PageComponent } from '@/app/serverComponent';
@@ -17,8 +18,10 @@ const MakeupArtistryPage: PageComponent = ({ searchParams }) => {
   const utmCampaign = getParam(searchParams.utm_campaign);
   const utmContent = getParam(searchParams.utm_content);
   const utmTerm = getParam(searchParams.utm_term);
+  const headersList = headers();
+  const referrer = headersList.get('referer');
 
-  return <MakeupArtistry gclid={gclid} msclkid={msclkid} utmSource={utmSource} utmMedium={utmMedium} utmCampaign={utmCampaign} utmContent={utmContent} utmTerm={utmTerm} />;
+  return <MakeupArtistry gclid={gclid} msclkid={msclkid} utmSource={utmSource} utmMedium={utmMedium} utmCampaign={utmCampaign} utmContent={utmContent} utmTerm={utmTerm} referrer={referrer} />;
 };
 
 export default MakeupArtistryPage;

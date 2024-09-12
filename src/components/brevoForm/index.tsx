@@ -25,6 +25,7 @@ type Props = {
   utmTerm?: string;
   courseCodes?: string[];
   button?: ReactElement;
+  referrer: string | null;
 };
 
 export const BrevoForm: FC<Props> = props => {
@@ -102,6 +103,7 @@ export const BrevoForm: FC<Props> = props => {
       {props.utmCampaign && <input type="hidden" name="utmCampaign" value={props.utmCampaign} />}
       {props.utmContent && <input type="hidden" name="utmContent" value={props.utmContent} />}
       {props.utmTerm && <input type="hidden" name="utmTerm" value={props.utmTerm} />}
+      {props.referrer && <input type="hidden" name="referrer" value={props.referrer} />}
       <div className="mb-3">
         {!props.placeholders && <label htmlFor={`${id}firstName`} className="form-label">Name</label>}
         <input onChange={handleFirstNameChange} value={firstName} type="text" name="firstName" id={`${id}firstName`} className="form-control" placeholder={props.placeholders ? 'Name' : undefined} autoComplete="given-name" autoCapitalize="words" />
