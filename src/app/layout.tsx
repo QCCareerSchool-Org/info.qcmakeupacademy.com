@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from 'next';
 // eslint-disable-next-line camelcase
 import { Open_Sans, Playfair_Display } from 'next/font/google';
