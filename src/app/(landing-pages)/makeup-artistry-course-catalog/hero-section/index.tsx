@@ -23,7 +23,7 @@ type Props = {
 };
 
 const brevoListId = 9;
-const brevoEmailTemplateId = 515;
+const brevoEmailTemplateId = 57;
 
 export const HeroSection: FC<Props> = props => {
   const screenWidth = useScreenWidth();
