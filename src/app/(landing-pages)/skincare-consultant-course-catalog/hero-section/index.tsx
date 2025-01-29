@@ -18,7 +18,7 @@ type Props = {
 };
 
 const brevoListId = 9;
-const brevoEmailTemplateId = 57;
+const brevoEmailTemplateId = 821;
 
 export const HeroSection: FC<Props> = props => (
   <section className="text-white">
