@@ -7,7 +7,6 @@ import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
 import { Tiktok } from '@/components/scripts/tiktok';
-import { TrustPulse } from '@/components/scripts/trustPulse';
 import { Providers } from '@/providers';
 
 import './globals.scss';
@@ -54,7 +53,6 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
         {process.env.FACEBOOK_ID && <Facebook id={process.env.FACEBOOK_ID} />}
         {process.env.TIKTOK_ID && <Tiktok id={process.env.TIKTOK_ID} />}
         {process.env.BING_ID && <Bing id={process.env.BING_ID} />}
-        {process.env.TRUSTPULSE_ID && <TrustPulse id={parseInt(process.env.TRUSTPULSE_ID, 10)} />}
       </body>
     </html>
   );
