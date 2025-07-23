@@ -1,9 +1,14 @@
 'use client';
 
+import 'react-phone-number-input/style.css';
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 import type { ChangeEventHandler, FC, FormEventHandler, ReactElement } from 'react';
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { DefaultInputComponentProps } from 'react-phone-number-input';
+import PhoneInput from 'react-phone-number-input/input';
+import type { Country, Value } from 'react-phone-number-input/input';
 import { v1 } from 'uuid';
 
 import styles from './index.module.scss';
@@ -26,12 +31,15 @@ type Props = {
   courseCodes?: string[];
   button?: ReactElement;
   referrer: string | null;
+  telephoneListId?: number;
+  countryCode?: string | null;
 };
 
 export const BrevoForm: FC<Props> = props => {
   const id = useId();
   const [ firstName, setFirstName ] = useState('');
   const [ lastName, setLastName ] = useState('');
+  const [ telephoneNumber, setTelephoneNumber ] = useState<Value>();
   const [ emailAddress, setEmailAddress ] = useState('');
   const [ token, setToken ] = useState<string>();
   const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
@@ -44,6 +52,10 @@ export const BrevoForm: FC<Props> = props => {
 
   const handleLastNameChange: ChangeEventHandler<HTMLInputElement> = e => {
     setLastName(e.target.value);
+  };
+
+  const handleTelephoneNumberChange = (value?: Value): void => {
+    setTelephoneNumber(value);
   };
 
   const handleEmailAddressChange: ChangeEventHandler<HTMLInputElement> = e => {
@@ -109,6 +121,18 @@ export const BrevoForm: FC<Props> = props => {
         <input onChange={handleFirstNameChange} value={firstName} type="text" name="firstName" id={`${id}firstName`} className="form-control" placeholder={props.placeholders ? 'Name' : undefined} autoComplete="given-name" autoCapitalize="words" />
       </div>
       <input onChange={handleLastNameChange} value={lastName} type="hidden" name="lastName" id={`${id}lastName`} />
+
+      {typeof props.telephoneListId !== 'undefined' && (
+        <>
+          <input type="hidden" name="telephoneListId" value={props.telephoneListId} />
+          <div className="mb-3">
+            {!props.placeholders && <label htmlFor={`${id}telephoneNumber`} className="form-label">Phone (optional)</label>}
+            <PhoneInput id={`${id}telephoneNumber`} value={telephoneNumber} onChange={handleTelephoneNumberChange} defaultCountry={props.countryCode as Country} inputComponent={InputComponent} />
+            <input type="hidden" name="telephoneNumber" value={telephoneNumber} />
+            <p className="p-1"><small>By providing your phone number, you agree to receive automated promotional messages from QC Makeup Academy. Message frequency varies. Message & data rates may apply. Reply STOP to opt out. <Link href="https://www.qcmakeupacademy.com/terms.html" target="_blank" rel="noreferrer">Terms & Privacy</Link>.</small></p>
+          </div>
+        </>
+      )}
       <div className="mb-3">
         {!props.placeholders && <label htmlFor={`${id}emailAddress`} className="form-label">Email <span className="text-primary">*</span></label>}
         <input onChange={handleEmailAddressChange} value={emailAddress} type="email" name="emailAddress" id={`${id}emailAddress`} className={`form-control ${styles.emailAddressInput}`} placeholder={props.placeholders ? 'Email *' : undefined} required autoComplete="email" autoCapitalize="none" />
@@ -131,3 +155,15 @@ export const BrevoForm: FC<Props> = props => {
     </form>
   );
 };
+
+type InputProps = {
+  value: Value;
+  onChange: ChangeEventHandler;
+};
+
+const InputComponent = forwardRef<HTMLInputElement, DefaultInputComponentProps>((props, ref) => {
+  const { value, onChange } = props as InputProps;
+  return <input ref={ref} type="tel" value={value} onChange={onChange} className="form-control" placeholder="Phone (Optional)" />;
+});
+
+InputComponent.displayName = 'InputComponent';

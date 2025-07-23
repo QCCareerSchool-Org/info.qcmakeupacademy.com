@@ -7,6 +7,7 @@ import { HowYourCourseWorksSection } from './how-your-course-works-section';
 import { StartTodaySection } from './start-today-section';
 import { TestimonialsSection } from './testimonials-section';
 import { VideoSection } from './video-section';
+import { getData } from '@/lib/getData';
 
 type Props = {
   alt?: boolean;
@@ -21,9 +22,11 @@ type Props = {
 };
 
 export const SkincareConsultant: FC<Props> = props => {
+  const { countryCode } = getData();
+
   return (
     <>
-      <HeroSection alt={props.alt} gclid={props.gclid} msclkid={props.msclkid} utmSource={props.utmSource} utmMedium={props.utmMedium} utmCampaign={props.utmCampaign} utmContent={props.utmContent} utmTerm={props.utmTerm} referrer={props.referrer} />
+      <HeroSection alt={props.alt} gclid={props.gclid} msclkid={props.msclkid} utmSource={props.utmSource} utmMedium={props.utmMedium} utmCampaign={props.utmCampaign} utmContent={props.utmContent} utmTerm={props.utmTerm} referrer={props.referrer} countryCode={countryCode} />
       <VideoSection />
       <CertificationSection />
       <HowYourCourseWorksSection />

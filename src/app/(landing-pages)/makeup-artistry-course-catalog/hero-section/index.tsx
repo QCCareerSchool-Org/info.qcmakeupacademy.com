@@ -20,6 +20,7 @@ type Props = {
   utmContent?: string;
   utmTerm?: string;
   referrer: string | null;
+  countryCode: string | null;
 };
 
 const brevoListId = 9;
@@ -51,6 +52,8 @@ export const HeroSection: FC<Props> = props => {
                 utmTerm={props.utmTerm}
                 placeholders
                 referrer={props.referrer}
+                telephoneListId={59}
+                countryCode={props.countryCode}
               />
               {!lgOrGreater && (
                 <div className="d-lg-none mt-4">
