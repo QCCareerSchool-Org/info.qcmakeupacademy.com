@@ -128,7 +128,7 @@ export const BrevoForm: FC<Props> = props => {
             {!props.placeholders && <label htmlFor={`${id}telephoneNumber`} className="form-label">Phone (optional)</label>}
             <PhoneInput id={`${id}telephoneNumber`} value={telephoneNumber} onChange={handleTelephoneNumberChange} defaultCountry={props.countryCode as Country} inputComponent={InputComponent} />
             <input type="hidden" name="telephoneNumber" value={telephoneNumber} />
-            <p className="p-1"><small>By providing your phone number, you agree to receive automated promotional messages from QC Makeup Academy. Message frequency varies. Message & data rates may apply. Reply STOP to opt out. <Link href="https://www.qcmakeupacademy.com/terms.html" target="_blank" rel="noreferrer">Terms & Privacy</Link>.</small></p>
+            <p className="p-1"><small>By providing your phone number, you agree to receive exclusive offers from QC Makeup Academy. Message frequency varies. Message & data rates may apply. Reply STOP to opt out. <Link href="https://www.qcmakeupacademy.com/terms.html" target="_blank" rel="noreferrer">Terms & Privacy</Link>.</small></p>
           </div>
         </>
       )}
