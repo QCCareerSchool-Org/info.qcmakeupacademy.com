@@ -121,8 +121,7 @@ export const BrevoForm: FC<Props> = props => {
         <input onChange={handleFirstNameChange} value={firstName} type="text" name="firstName" id={`${id}firstName`} className="form-control" placeholder={props.placeholders ? 'Name' : undefined} autoComplete="given-name" autoCapitalize="words" />
       </div>
       <input onChange={handleLastNameChange} value={lastName} type="hidden" name="lastName" id={`${id}lastName`} />
-
-      {typeof props.telephoneListId !== 'undefined' && (
+      {(props.countryCode === 'CA' || props.countryCode === 'US') && typeof props.telephoneListId !== 'undefined' && (
         <>
           <input type="hidden" name="telephoneListId" value={props.telephoneListId} />
           <div className="mb-3">
