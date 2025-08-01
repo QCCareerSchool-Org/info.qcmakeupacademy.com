@@ -45,6 +45,7 @@ export const BrevoForm: FC<Props> = props => {
   const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
   const submitting = useRef(false);
   const [ disabled, setDisabled ] = useState(true);
+  const [ telephoneNumberE164, setTelephoneNumberE164 ] = useState('');
 
   const handleFirstNameChange: ChangeEventHandler<HTMLInputElement> = e => {
     setFirstName(e.target.value);
@@ -99,6 +100,14 @@ export const BrevoForm: FC<Props> = props => {
     return true;
   };
 
+  // neeed so that we send the telephone number in the correct format
+  // if we try to use telephoneNumber directly there is an issue:
+  // removing the telephone number from the visible field doesn't remove the value from the hidden field
+  // if we try to use the <PhoneInput /> component directly, we don't get the correct format in the back end
+  useEffect(() => {
+    setTelephoneNumberE164(telephoneNumber ?? '');
+  }, [ telephoneNumber ]);
+
   return (
     <form action="https://leads.qccareerschool.com" method="post" className={styles.brochureForm} onSubmit={handleSubmit}>
       <input type="hidden" name="g-recaptcha-response" value={token} />
@@ -127,7 +136,7 @@ export const BrevoForm: FC<Props> = props => {
           <div className="mb-3">
             {!props.placeholders && <label htmlFor={`${id}telephoneNumber`} className="form-label">Phone (optional)</label>}
             <PhoneInput id={`${id}telephoneNumber`} value={telephoneNumber} onChange={handleTelephoneNumberChange} defaultCountry={props.countryCode as Country} inputComponent={InputComponent} />
-            <input type="hidden" name="telephoneNumber" value={telephoneNumber} />
+            <input type="hidden" name="telephoneNumber" value={telephoneNumberE164} />
             <p className="p-1"><small>By providing your phone number, you agree to receive exclusive offers from QC Makeup Academy. Message frequency varies. Message & data rates may apply. Reply STOP to opt out. <Link href="https://www.qcmakeupacademy.com/terms.html" target="_blank" rel="noreferrer">Terms & Privacy</Link>.</small></p>
           </div>
         </>
@@ -151,6 +160,7 @@ export const BrevoForm: FC<Props> = props => {
         )
       }
       <GoogleReCaptcha onVerify={handleVerify} refreshReCaptcha={refreshReCaptcha} />
+      {telephoneNumber}
     </form>
   );
 };
@@ -158,11 +168,12 @@ export const BrevoForm: FC<Props> = props => {
 type InputProps = {
   value: Value;
   onChange: ChangeEventHandler;
+  name: string;
 };
 
 const InputComponent = forwardRef<HTMLInputElement, DefaultInputComponentProps>((props, ref) => {
-  const { value, onChange } = props as InputProps;
-  return <input ref={ref} type="tel" value={value} onChange={onChange} className="form-control" placeholder="Phone (Optional)" />;
+  const { value, onChange, name } = props as InputProps;
+  return <input ref={ref} name={name} type="tel" value={value} onChange={onChange} className="form-control" placeholder="Phone (Optional)" />;
 });
 
 InputComponent.displayName = 'InputComponent';
