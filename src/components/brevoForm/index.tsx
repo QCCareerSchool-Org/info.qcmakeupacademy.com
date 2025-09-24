@@ -160,7 +160,6 @@ export const BrevoForm: FC<Props> = props => {
         )
       }
       <GoogleReCaptcha onVerify={handleVerify} refreshReCaptcha={refreshReCaptcha} />
-      {telephoneNumber}
     </form>
   );
 };
