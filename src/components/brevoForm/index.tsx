@@ -130,6 +130,10 @@ export const BrevoForm: FC<Props> = props => {
         <input onChange={handleFirstNameChange} value={firstName} type="text" name="firstName" id={`${id}firstName`} className="form-control" placeholder={props.placeholders ? 'Name' : undefined} autoComplete="given-name" autoCapitalize="words" />
       </div>
       <input onChange={handleLastNameChange} value={lastName} type="hidden" name="lastName" id={`${id}lastName`} />
+      <div className="mb-3">
+        {!props.placeholders && <label htmlFor={`${id}emailAddress`} className="form-label">Email <span className="text-primary">*</span></label>}
+        <input onChange={handleEmailAddressChange} value={emailAddress} type="email" name="emailAddress" id={`${id}emailAddress`} className={`form-control ${styles.emailAddressInput}`} placeholder={props.placeholders ? 'Email *' : undefined} required autoComplete="email" autoCapitalize="none" />
+      </div>
       {(props.countryCode === 'CA' || props.countryCode === 'US') && typeof props.telephoneListId !== 'undefined' && (
         <>
           <input type="hidden" name="telephoneListId" value={props.telephoneListId} />
@@ -137,14 +141,10 @@ export const BrevoForm: FC<Props> = props => {
             {!props.placeholders && <label htmlFor={`${id}telephoneNumber`} className="form-label">Phone (optional)</label>}
             <PhoneInput id={`${id}telephoneNumber`} value={telephoneNumber} onChange={handleTelephoneNumberChange} defaultCountry={props.countryCode as Country} inputComponent={InputComponent} />
             <input type="hidden" name="telephoneNumber" value={telephoneNumberE164} />
-            <p className="p-1"><small>By providing your phone number, you agree to receive exclusive offers from QC Makeup Academy. Message frequency varies. Message & data rates may apply. Reply STOP to opt out. <Link href="https://www.qcmakeupacademy.com/terms.html" target="_blank" rel="noreferrer">Terms & Privacy</Link>.</small></p>
+            {telephoneNumber && <p className="p-1"><small>By providing your phone number, you agree to receive exclusive offers from QC Makeup Academy. Message frequency varies. Message & data rates may apply. Reply STOP to opt out. <Link href="https://www.qcmakeupacademy.com/terms.html" target="_blank" rel="noreferrer">Terms & Privacy</Link>.</small></p>}
           </div>
         </>
       )}
-      <div className="mb-3">
-        {!props.placeholders && <label htmlFor={`${id}emailAddress`} className="form-label">Email <span className="text-primary">*</span></label>}
-        <input onChange={handleEmailAddressChange} value={emailAddress} type="email" name="emailAddress" id={`${id}emailAddress`} className={`form-control ${styles.emailAddressInput}`} placeholder={props.placeholders ? 'Email *' : undefined} required autoComplete="email" autoCapitalize="none" />
-      </div>
       <div className="mb-3">
         <div className="form-check">
           <input type="checkbox" name="emailOptIn" id={`${id}emailOptIn`} className="form-check-input" />
