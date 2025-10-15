@@ -9,14 +9,18 @@ import { useScreenWidth } from '@/hooks/useScreenWidth';
 
 const iconSize = 36;
 
-export const HowYourCourseWorksSection: FC = () => {
+type Props = {
+  className?: string;
+};
+
+export const HowYourCourseWorksSection: FC<Props> = ({ className }) => {
   const screenWidth = useScreenWidth();
 
   const lgOrGreater = screenWidth >= 992;
   const xlOrGreater = screenWidth >= 1200;
 
   return (
-    <section>
+    <section className={className}>
       <div className="container text-center">
         <h2 className="h1 mb-5">How Your Course Works</h2>
         <div className="row justify-content-center">
