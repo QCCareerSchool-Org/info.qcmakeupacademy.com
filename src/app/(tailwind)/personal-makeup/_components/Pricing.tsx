@@ -8,7 +8,7 @@ export const Pricing: React.FC = () => {
   const [ spots, setSpots ] = useState(20);
   const countdownRef = useRef(null);
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  const isInView = useInView(countdownRef, { once: true, amount: 0.3 }) as boolean;
+  const isInView = useInView(countdownRef, { once: true, amount: 0.3 });
 
   useEffect(() => {
     // Only start if visible
