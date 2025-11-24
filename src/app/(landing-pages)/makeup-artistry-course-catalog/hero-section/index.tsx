@@ -32,7 +32,7 @@ export const HeroSection: FC<Props> = props => {
 
   return (
     <section style={{ backgroundColor: '#86081c' }}>
-      <BackgroundImage desktopSrc={HeroImage} desktopObjectPosition="50% 30%" mobileSrc={HeroMobileImage} mobileObjectPosition="50% 0%" priority />
+      <BackgroundImage src={HeroImage} objectPosition="50% 30%" mobile={{ breakpoint: 'lg', src: HeroMobileImage, objectPosition: '50% 0%' }} priority />
       <div className="container">
         <HeaderLogo />
         <div className="row align-items-center">
