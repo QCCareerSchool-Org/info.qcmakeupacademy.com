@@ -1,4 +1,19 @@
- body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  --color-linen: #F5F2EB;
+  --color-linen-dard: #E6E2D6;
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-light: #333333
+  --color-charcoal-almond: #DBCFB0
+  --color-sand: #C2B8A3
+}
+
+@import "tailwindcss";
+
+body {
   background-color: #F5F2EB;
   color: #1A1A1A;
 }
