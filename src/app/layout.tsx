@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-// eslint-disable-next-line camelcase
-import { Open_Sans, Playfair_Display } from 'next/font/google';
+import { Open_Sans as OpenSans, Playfair_Display as PlayfairDisplay } from 'next/font/google';
 import { FC, PropsWithChildren } from 'react';
 
 import { Bing } from '@/components/scripts/bing';
@@ -9,13 +8,11 @@ import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
 import { Tiktok } from '@/components/scripts/tiktok';
 import { Providers } from '@/providers';
 
-import './globals.scss';
-
 export const metadata: Metadata = {
   title: 'QC Makeup Academy',
 };
 
-const openSans = Open_Sans({
+const openSans = OpenSans({
   weight: [ '300', '400', '700' ],
   style: [ 'normal', 'italic' ],
   subsets: [ 'latin' ],
@@ -23,8 +20,8 @@ const openSans = Open_Sans({
   display: 'swap',
 });
 
-const playfairDisplay = Playfair_Display({
-  weight: [ '500' ],
+const playfairDisplay = PlayfairDisplay({
+  weight: [ '400', '500', '600' ],
   style: [ 'normal', 'italic' ],
   subsets: [ 'latin' ],
   variable: '--qc-playfair-display',

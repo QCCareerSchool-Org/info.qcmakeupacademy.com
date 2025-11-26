@@ -6,7 +6,7 @@ export const Footer: FC = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-center md:text-left">
           <h4 className="font-serif text-xl font-bold text-charcoal">QC Makeup Academy</h4>
-          <p className="font-sans text-sm text-charcoal/60 mt-2">© 2024 All Rights Reserved.</p>
+          <p className="font-sans text-sm text-charcoal/60 mt-2">© {new Date().getFullYear()} All Rights Reserved.</p>
         </div>
         <div className="flex gap-6 font-sans text-sm text-charcoal/60 uppercase tracking-widest">
           <a href="#" className="hover:text-charcoal transition-colors">Privacy</a>

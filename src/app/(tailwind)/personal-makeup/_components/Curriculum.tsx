@@ -2,16 +2,27 @@ import { Check, Play, Sparkles, Star, User } from 'lucide-react';
 import React from 'react';
 import type { FC } from 'react';
 
-import { FadeIn } from './FadeIn';
+import { FadeIn } from '../../_components/fadeIn';
+
+interface IconTitleDesc {
+  icon: FC<{ className?: string }>;
+  title: string;
+  desc: string;
+}
+
+interface Fundamental {
+  category: string;
+  items: string[];
+}
 
 export const Curriculum: FC = () => {
-  const methods = [
-    { icon: Play as FC<{ className?: string }>, title: 'Professional Video Lessons', desc: 'Complete at your own pace.' },
-    { icon: Star as FC<{ className?: string }>, title: 'Real-Life Applications', desc: 'Build skills & confidence.' },
-    { icon: User as FC<{ className?: string }>, title: 'Personalized Coaching', desc: 'Create a routine fitting your life.' },
+  const methods: IconTitleDesc[] = [
+    { icon: Play, title: 'Professional Video Lessons', desc: 'Complete at your own pace.' },
+    { icon: Star, title: 'Real-Life Applications', desc: 'Build skills & confidence.' },
+    { icon: User, title: 'Personalized Coaching', desc: 'Create a routine fitting your life.' },
   ];
 
-  const fundamentals = [
+  const fundamentals: Fundamental[] = [
     {
       category: 'Skin Prep',
       items: [ 'Proper skincare', 'Concealing under-eye circles' ],
@@ -26,12 +37,12 @@ export const Curriculum: FC = () => {
     },
   ];
 
-  const outcomes = [
-    { icon: Check as FC<{ className?: string }>, title: 'Under 20 Minutes', desc: 'Create perfect everyday & evening looks confidently without stress.' },
-    { icon: Check as FC<{ className?: string }>, title: 'Eliminate Guesswork', desc: 'Know exactly which 5-10 products enhance your features.' },
-    { icon: Check as FC<{ className?: string }>, title: 'Self-Care Ritual', desc: 'Transform your routine into a 5-minute moment for yourself.' },
-    { icon: Check as FC<{ className?: string }>, title: 'Professional Skills', desc: 'Choose from 50+ techniques to try trends or enhance staples.' },
-    { icon: Sparkles as FC<{ className?: string }>, title: 'Custom Skincare Routine', desc: 'Learn easy-to-follow steps that keep your complexion fresh and healthy with a custom skincare routine.' },
+  const outcomes: IconTitleDesc[] = [
+    { icon: Check, title: 'Under 20 Minutes', desc: 'Create perfect everyday & evening looks confidently without stress.' },
+    { icon: Check, title: 'Eliminate Guesswork', desc: 'Know exactly which 5-10 products enhance your features.' },
+    { icon: Check, title: 'Self-Care Ritual', desc: 'Transform your routine into a 5-minute moment for yourself.' },
+    { icon: Check, title: 'Professional Skills', desc: 'Choose from 50+ techniques to try trends or enhance staples.' },
+    { icon: Sparkles, title: 'Custom Skincare Routine', desc: 'Learn easy-to-follow steps that keep your complexion fresh and healthy with a custom skincare routine.' },
   ];
 
   return (
@@ -89,7 +100,7 @@ export const Curriculum: FC = () => {
               <div className="hidden md:block absolute top-0 left-[16.66%] right-[16.66%] h-px bg-charcoal/20" />
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 pt-0 md:pt-8">
-                {fundamentals.map((branch, i) => (
+                {fundamentals.map((f, i) => (
                   <div key={i} className="flex flex-col items-center relative">
 
                     {/* Vertical Line from Horizontal Bar to Branch Node (Desktop) */}
@@ -98,7 +109,7 @@ export const Curriculum: FC = () => {
 
                     {/* Branch Node */}
                     <div className="bg-white border border-charcoal/10 px-6 py-3 font-serif text-lg font-semibold text-charcoal shadow-sm mb-4 w-full md:w-auto text-center relative z-20">
-                      {branch.category}
+                      {f.category}
 
                       {/* Mobile Connector (Connecting to previous sibling) */}
                       {/* Draws a line through the gap between stacked items on mobile */}
@@ -111,7 +122,7 @@ export const Curriculum: FC = () => {
 
                     {/* Leaf Nodes (Items) */}
                     <ul className="space-y-3 text-center w-full relative z-10 flex flex-col items-center">
-                      {branch.items.map((item, j) => (
+                      {f.items.map((item, j) => (
                         <li key={j} className="font-sans text-charcoal/70 font-light text-sm md:text-base px-3 py-2 bg-white/50 rounded-md border border-charcoal/5 inline-block w-auto min-w-[200px]">
                           {item}
                         </li>
@@ -133,13 +144,13 @@ export const Curriculum: FC = () => {
 
           {/* Flex layout for symmetrical centering (3 top, 2 bottom centered) */}
           <div className="flex flex-wrap justify-center gap-y-12 -mx-4">
-            {outcomes.map((item, i) => (
+            {outcomes.map((o, i) => (
               <div key={i} className="w-full md:w-1/3 px-4 flex flex-col items-center text-center">
                 <div className="w-10 h-10 rounded-full bg-linen flex items-center justify-center mb-4 text-charcoal">
-                  <item.icon className="w-5 h-5" />
+                  <o.icon className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold uppercase tracking-wider text-sm mb-2">{item.title}</h4>
-                <p className="font-sans font-light text-charcoal/70 text-sm leading-relaxed max-w-xs mx-auto">{item.desc}</p>
+                <h4 className="font-bold uppercase tracking-wider text-sm mb-2">{o.title}</h4>
+                <p className="font-sans font-light text-charcoal/70 text-sm leading-relaxed max-w-xs mx-auto">{o.desc}</p>
               </div>
             ))}
           </div>

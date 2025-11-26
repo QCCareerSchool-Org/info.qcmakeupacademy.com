@@ -1,34 +1,37 @@
+'use client';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { FC } from 'react';
-import { Button } from '../Button';
-import { FadeIn } from '../FadeIn';
+import { Button } from '../../../_components/button';
+import { FadeIn } from '../../../_components/fadeIn';
 
 import HeroImage from './background.jpg';
 import { BackgroundImage } from '@/components/backgroundImage';
 
 const words = [ 'Beautiful.', 'Confident.', 'Effortlessly You.' ];
 
+const scrollToPricing = (): void => {
+  document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+};
+
 export const Hero: FC = () => {
   const [ index, setIndex ] = useState(0);
 
+  // rotate through the words
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex(prevIndex => (prevIndex + 1) % words.length);
+      setIndex(i => (i + 1) % words.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
-  const scrollToPricing = (): void => {
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 py-20 overflow-hidden">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
-        <BackgroundImage src={HeroImage} />
+        <BackgroundImage src={HeroImage} mobile={{ src: HeroImage, objectPosition: '55% 50%', breakpoint: 'md' }} />
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-charcoal/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent" />
@@ -65,15 +68,12 @@ export const Hero: FC = () => {
 
           <FadeIn delay={0.2}>
             <p className="font-sans text-lg md:text-xl font-light text-white/90 max-w-lg leading-relaxed mb-10 border-l-2 border-white/30 pl-6">
-              Feel polished, radiant, and confident every single day. Not a mask—just the best version of you.
+              Look and feel like your best self every day.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <Button
-              variant="white"
-              onClick={scrollToPricing}
-            >
+            <Button variant="white" onClick={scrollToPricing}>
               Secure Your Spot
             </Button>
           </FadeIn>

@@ -1,13 +1,33 @@
-import { AnimatePresence, motion, useInView } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react';
-import { Button } from './Button';
-import { FadeIn } from './FadeIn';
+'use client';
 
-export const Pricing: React.FC = () => {
-  const [ spots, setSpots ] = useState(20);
+import { AnimatePresence, motion, useInView } from 'framer-motion';
+import Cookies from 'js-cookie';
+import { ShieldCheck } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import type { FC } from 'react';
+
+import { Button } from '../../_components/button';
+import { FadeIn } from '../../_components/fadeIn';
+
+interface Props {
+  initialSpots?: number;
+}
+
+const maxSpots = 20;
+
+const includes = [
+  { item: '35 Step-by-Step Video Tutorials', value: '$300' },
+  { item: 'Two Personalized Coaching Sessions', value: '$200' },
+  { item: 'The 5-Minute Makeup Guide', value: '$50' },
+  { item: 'Custom Product & Tool Recommendations', value: '$50' },
+  { item: 'Self-Paced Masterclass + Exercises', value: '$100' },
+  { item: 'Custom Skincare Analysis & Routine Builder', value: '$100' },
+];
+
+export const Pricing: FC<Props> = ({ initialSpots }) => {
+  const [ spots, setSpots ] = useState(initialSpots ?? maxSpots);
   const countdownRef = useRef(null);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  const firstTimeout = useRef(true);
   const isInView = useInView(countdownRef, { once: true, amount: 0.3 });
 
   useEffect(() => {
@@ -17,25 +37,22 @@ export const Pricing: React.FC = () => {
     // Stop countdown at 15 to maintain scarcity without going to zero
     if (spots <= 15) { return; }
 
-    // Randomize the delay: Faster now (approx 4-8 seconds)
-    // Speed up by ~50% from previous settings
-    const delay = Math.floor(Math.random() * 4000) + 4000;
+    // Randomized the delay
+    // The first time is faster
+    const delay = firstTimeout.current ? (Math.floor(Math.random() * 4_000) + 4_000) : (Math.floor(Math.random() * 12_000) + 12_000);
+
+    firstTimeout.current = false;
 
     const timer = setTimeout(() => {
-      setSpots(prev => prev - 1);
+      setSpots(prev => {
+        const cur = prev - 1;
+        Cookies.set('spots', cur.toFixed(), { expires: 7, sameSite: 'strict', secure: true }); // store the value so it doesn't reset on reload
+        return cur;
+      });
     }, delay);
 
     return () => clearTimeout(timer);
   }, [ spots, isInView ]);
-
-  const includes = [
-    { item: '35 Step-by-Step Video Tutorials', value: '$300' },
-    { item: 'Two Personalized Coaching Sessions', value: '$200' },
-    { item: 'The 5-Minute Makeup Guide', value: '$50' },
-    { item: 'Custom Product & Tool Recommendations', value: '$50' },
-    { item: 'Self-Paced Masterclass + Exercises', value: '$100' },
-    { item: 'Custom Skincare Analysis & Routine Builder', value: '$100' },
-  ];
 
   return (
     <section id="pricing" className="bg-linen">

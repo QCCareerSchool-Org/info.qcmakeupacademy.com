@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { FC } from 'react';
-import { FadeIn } from '../FadeIn';
+import { FadeIn } from '../../../_components/fadeIn';
 
 import NathanImage from './nathan.jpg';
 

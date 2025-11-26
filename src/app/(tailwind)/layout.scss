@@ -6,9 +6,11 @@
   --color-linen: #F5F2EB;
   --color-linen-dard: #E6E2D6;
   --color-charcoal: #1A1A1A;
-  --color-charcoal-light: #333333
-  --color-charcoal-almond: #DBCFB0
-  --color-sand: #C2B8A3
+  --color-charcoal-light: #333333;
+  --color-charcoal-almond: #DBCFB0;
+  --color-sand: #C2B8A3;
+  --font-sans: var(--qc-open-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: var(--qc-playfair-display), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 @import "tailwindcss";

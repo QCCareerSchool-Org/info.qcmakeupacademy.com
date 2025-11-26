@@ -1,64 +1,28 @@
-'use client';
+import { cookies } from 'next/headers';
+import type { FC } from 'react';
 
-import React, { useEffect, useState } from 'react';
-import { Button } from './_components/Button';
-import { Curriculum } from './_components/Curriculum';
-import { Footer } from './_components/Footer';
+import { Curriculum } from './_components/curriculum';
 import { Hero } from './_components/hero';
 import { Instructor } from './_components/instructor';
-import { Pricing } from './_components/Pricing';
-import { ProblemSolution } from './_components/ProblemSolution';
-import { Testimonials } from './_components/Testimonials';
+import { Pricing } from './_components/pricing';
+import { ProblemSolution } from './_components/problemSolution';
+import { Testimonials } from './_components/testimonials';
 
-const App: React.FC = () => {
-  const [ showStickyNav, setShowStickyNav ] = useState(false);
+const App: FC = () => {
+  const cookieStore = cookies();
+  const initialSpotsCookie = cookieStore.get('spots');
 
-  useEffect(() => {
-    const handleScroll = (): void => {
-      // Show sticky nav after scrolling past hero (approx 800px)
-      if (window.scrollY > 800) {
-        setShowStickyNav(true);
-      } else {
-        setShowStickyNav(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToPricing = (): void => {
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const initialSpots = typeof initialSpotsCookie === 'undefined' ? undefined : parseInt(initialSpotsCookie.value, 10);
 
   return (
-    <div className="antialiased selection:bg-sand selection:text-white">
-      {/* Sticky Call to Action Nav */}
-      <div className={`fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-charcoal/10 transition-transform duration-500 ${showStickyNav ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <span className="font-serif text-charcoal font-bold hidden sm:block">QC Makeup Academy</span>
-          <div className="flex items-center gap-4 ml-auto">
-            <span className="font-sans text-xs uppercase tracking-widest text-charcoal/60 hidden md:block">
-              Limited spots available
-            </span>
-            <Button onClick={scrollToPricing} className="py-2 px-6 text-xs">
-              Join Now
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      <main>
-        <Hero />
-        <ProblemSolution />
-        <Instructor />
-        <Curriculum />
-        <Testimonials />
-        <Pricing />
-      </main>
-
-      <Footer />
-    </div>
+    <>
+      <Hero />
+      <ProblemSolution />
+      <Instructor />
+      <Curriculum />
+      <Testimonials />
+      <Pricing initialSpots={initialSpots} />
+    </>
   );
 };
 

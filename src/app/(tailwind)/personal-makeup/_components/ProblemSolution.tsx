@@ -1,13 +1,14 @@
 import { CheckCircle2, XCircle } from 'lucide-react';
 import type { FC } from 'react';
-import { FadeIn } from './FadeIn';
+
+import { FadeIn } from '../../_components/fadeIn';
 
 export const ProblemSolution: FC = () => {
   const problems = [
     <>You're frustrated with <strong className="font-medium text-charcoal">one-size-fits-all online tutorials</strong> that feel complicated and overwhelming.</>,
     <>The makeup and skincare routines you learned in your 20s <strong className="font-medium text-charcoal">no longer fit who you are today</strong>.</>,
     <>Your <strong className="font-medium text-charcoal">self-care has been on hold</strong> while you put everyone else first, but you're ready to carve out time for yourself.</>,
-    <>You've bought the products, but you don't know how to make them work for your features.</>,
+    <>You've <strong className="font-medium text-charcoal">bought the products</strong>, but you don't know how to make them work for your features.</>,
     <>You want a look that <strong className="font-medium text-charcoal">demands compliments</strong>, but there's no way you're giving up your morning coffee.</>,
   ];
 
@@ -52,7 +53,7 @@ export const ProblemSolution: FC = () => {
 
               <div>
                 <h3 className="font-serif text-xl md:text-2xl mb-6 leading-tight text-charcoal">
-                  Stop wasting time with tutorials that don't work for you. QC Makeup Academy's Personalized Makeup Coaching Program gives you:
+                  Stop wasting time with tutorials that don't work for you. QC Makeup Academy's <strong className="font-semibold text-charcoal">Personalized Makeup Coaching Program</strong> gives you:
                 </h3>
 
                 <ul className="space-y-5 mb-8">

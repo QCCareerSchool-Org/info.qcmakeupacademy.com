@@ -1,8 +1,14 @@
 import type { FC } from 'react';
-import { FadeIn } from './FadeIn';
+
+import { FadeIn } from '../../_components/fadeIn';
+
+export interface Testimonial {
+  text: string;
+  author: string;
+}
 
 export const Testimonials: FC = () => {
-  const reviews = [
+  const reviews: Testimonial[] = [
     {
       text: "Nathan was an amazing teacher. My journey is just beginning and I can't wait to see what comes next!",
       author: 'Carolyn W.',
