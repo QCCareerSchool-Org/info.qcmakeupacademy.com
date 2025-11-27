@@ -47,7 +47,7 @@ export const Hero: FC = () => {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-white mb-8">
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-8xl leading-[1.1] text-white mb-8">
               Learn Makeup That Makes You Feel{' '}
               <span className="inline-block">
                 <AnimatePresence mode="wait">
