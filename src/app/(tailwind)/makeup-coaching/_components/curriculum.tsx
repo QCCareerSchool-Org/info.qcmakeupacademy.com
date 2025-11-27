@@ -134,7 +134,7 @@ export const Curriculum: FC = () => {
           </div>
 
           {/* Flex layout for symmetrical centering (3 top, 2 bottom centered) */}
-          <div className="flex flex-wrap justify-center gap-y-8 -mx-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-y-8 -mx-4 mb-16">
             {outcomes.map((o, i) => (
               <div key={i} className="w-full lg:w-1/2 px-4 flex flex-col items-center text-center">
                 <Check className="w-5 h-5 m-auto mb-4" />

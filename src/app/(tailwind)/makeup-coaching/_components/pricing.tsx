@@ -117,7 +117,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
               Learn Makeup Techniques Designed for You
             </p>
 
-            <div className="space-y-6 text-lg font-sans font-light leading-relaxed text-white/90 mb-10">
+            <div className="space-y-6 text-lg font-sans font-light leading-relaxed text-white/70 mb-10">
               <p>
                 The next
                 <span className="inline-block relative w-[2.5ch] h-[1.3em] align-bottom mx-1 overflow-hidden translate-y-[0.15em]">
