@@ -34,9 +34,9 @@ export const Instructor: FC = () => {
               <p>
                 With experience on red carpets, magazine shoots, and television appearances, Nathan has worked with the stars, but his true passion is helping everyday people discover their own beauty.
               </p>
-              <blockquote className="border-l-2 border-charcoal pl-6 py-2 my-8 text-xl font-serif italic text-charcoal">
-                &ldquo;Makeup isn't about hiding flaws; it's about celebrating you.&rdquo;
-              </blockquote>
+              <p>
+                <span className="font-medium">Nathan believes makeup isn't about hiding flaws; it's about celebrating <em>you</em>.</span>
+              </p>
             </div>
           </FadeIn>
         </div>

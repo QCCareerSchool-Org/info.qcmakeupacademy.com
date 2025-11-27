@@ -73,7 +73,7 @@ export const Hero: FC = () => {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <Button variant="white" onClick={scrollToPricing}>
+            <Button variant="primary" onClick={scrollToPricing}>
               Secure Your Spot
             </Button>
           </FadeIn>

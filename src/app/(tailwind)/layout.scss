@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 @theme {
-  --color-linen: #F5F2EB;
-  --color-linen-dard: #E6E2D6;
-  --color-charcoal: #1A1A1A;
+  --color-primary: #fc5f5f;
+  --color-linen: #f5f2eb;
+  --color-linen-dard: #e6e2d6;
+  --color-charcoal: #1a1a1a;
   --color-charcoal-light: #333333;
-  --color-charcoal-almond: #DBCFB0;
-  --color-sand: #C2B8A3;
+  --color-charcoal-almond: #dbcfb0;
+  --color-sand: #c2b8a3;
   --font-sans: var(--qc-open-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-serif: var(--qc-playfair-display), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
@@ -17,10 +18,9 @@
 
 body {
   background-color: #F5F2EB;
-  color: #1A1A1A;
+  color: #1a1a1a;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }

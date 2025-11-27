@@ -19,9 +19,9 @@ const includes = [
   { item: '35 Step-by-Step Video Tutorials', value: '$300' },
   { item: 'Two Personalized Coaching Sessions', value: '$200' },
   { item: 'The 5-Minute Makeup Guide', value: '$50' },
-  { item: 'Custom Product & Tool Recommendations', value: '$50' },
-  { item: 'Self-Paced Masterclass + Exercises', value: '$100' },
-  { item: 'Custom Skincare Analysis & Routine Builder', value: '$100' },
+  { item: 'Custom Product and Tool Recommendations', value: '$50' },
+  { item: 'Self-Paced Masterclass + Hands-On Exercises', value: '$100' },
+  { item: 'Custom Skincare Analysis and Routine Builder', value: '$100' },
 ];
 
 export const Pricing: FC<Props> = ({ initialSpots }) => {
@@ -39,7 +39,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
 
     // Randomized the delay
     // The first time is faster
-    const delay = firstTimeout.current ? (Math.floor(Math.random() * 4_000) + 4_000) : (Math.floor(Math.random() * 12_000) + 12_000);
+    const delay = firstTimeout.current ? (Math.floor(Math.random() * 4_000) + 4_000) : (Math.floor(Math.random() * 18_000) + 12_000);
 
     firstTimeout.current = false;
 
@@ -99,7 +99,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
               <div className="text-center md:text-left">
                 <h4 className="font-serif text-lg font-bold text-charcoal">Risk-Free Guarantee</h4>
                 <p className="font-sans font-light text-sm text-charcoal/70 mt-1">
-                  Try the program for 7 days. If you don't feel more confident, get a full refund—no questions asked.
+                  Try the program for 7 days. If you don't feel more confident, get a <span className="font-semibold">full refund—no questions asked.</span>
                 </p>
               </div>
             </div>

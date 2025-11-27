@@ -1,21 +1,21 @@
-import { CheckCircle2, XCircle } from 'lucide-react';
+import { CheckCircle2, Coffee, XCircle } from 'lucide-react';
 import type { FC } from 'react';
 
 import { FadeIn } from '../../_components/fadeIn';
 
 export const ProblemSolution: FC = () => {
   const problems = [
-    <>You're frustrated with <strong className="font-medium text-charcoal">one-size-fits-all online tutorials</strong> that feel complicated and overwhelming.</>,
-    <>The makeup and skincare routines you learned in your 20s <strong className="font-medium text-charcoal">no longer fit who you are today</strong>.</>,
-    <>Your <strong className="font-medium text-charcoal">self-care has been on hold</strong> while you put everyone else first, but you're ready to carve out time for yourself.</>,
-    <>You've <strong className="font-medium text-charcoal">bought the products</strong>, but you don't know how to make them work for your features.</>,
-    <>You want a look that <strong className="font-medium text-charcoal">demands compliments</strong>, but there's no way you're giving up your morning coffee.</>,
+    { text: <>You're frustrated with <strong className="font-medium text-charcoal">one-size-fits-all online tutorials</strong> that feel complicated and overwhelming.</> },
+    { text: <>The makeup and skincare routines you learned in your 20s <strong className="font-medium text-charcoal">no longer fit who you are today</strong>.</> },
+    { text: <>Your <strong className="font-medium text-charcoal">self-care has been on hold</strong> while you put everyone else first, but you're ready to carve out time for yourself.</> },
+    { text: <>You've <strong className="font-medium text-charcoal">bought the products</strong>, but you don't know how to make them work for your features.</> },
+    { Icon: Coffee, text: <>You want a look that <strong className="font-medium text-charcoal">demands compliments</strong>, but there's no way you're giving up your morning coffee.</> },
   ];
 
   const solutionItems = [
-    'One-on-one guidance from celebrity makeup artist Nathan Johnson.',
-    'Techniques tailored to your features and lifestyle.',
-    'Practical strategies you can apply in minutes each day to look polished, radiant, and feel confident.',
+    <><span className="font-medium">One-on-one guidance</span> from celebrity makeup artist Nathan Johnson.</>,
+    <><span className="font-medium">Techniques tailored to your features and lifestyle.</span></>,
+    <><span className="font-medium">Practical strategies</span> you can apply in minutes each day to look polished, radiant, and feel confident.</>,
   ];
 
   return (
@@ -30,18 +30,21 @@ export const ProblemSolution: FC = () => {
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 mb-16">
           {/* Problem Column */}
           <FadeIn delay={0.2}>
             <div className="space-y-8">
-              <h3 className="font-serif text-2xl border-b border-charcoal/10 pb-4">Does This Sound Like You?</h3>
+              <h3 className="font-serif text-2xl border-b border-charcoal/10 pb-4">Does this sound like you?</h3>
               <ul className="space-y-6">
-                {problems.map((problem, i) => (
-                  <li key={i} className="flex items-start gap-4 group">
-                    <XCircle className="w-5 h-5 text-almond mt-1 shrink-0 group-hover:text-charcoal transition-colors" />
-                    <span className="font-sans font-light text-charcoal/80 leading-relaxed">{problem}</span>
-                  </li>
-                ))}
+                {problems.map(({ text, Icon }, i) => {
+                  Icon = Icon ?? XCircle;
+                  return (
+                    <li key={i} className="flex items-start gap-4 group">
+                      <Icon className="w-5 h-5 text-red-500 mt-1 shrink-0 group-hover:text-red-900 transition-colors" />
+                      <span className="font-sans font-light text-charcoal/80 leading-relaxed">{text}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </FadeIn>
@@ -53,27 +56,29 @@ export const ProblemSolution: FC = () => {
 
               <div>
                 <h3 className="font-serif text-xl md:text-2xl mb-6 leading-tight text-charcoal">
-                  Stop wasting time with tutorials that don't work for you. QC Makeup Academy's <strong className="font-semibold text-charcoal">Personalized Makeup Coaching Program</strong> gives you:
+                  Stop wasting time with tutorials that don't work for you.
                 </h3>
 
-                <ul className="space-y-5 mb-8">
+                <p className="font-light text-charcoal/80 mb-6">
+                  QC Makeup Academy's <strong className="font-medium">Personalized Makeup Coaching Program</strong> gives you:
+                </p>
+
+                <ul className="space-y-5">
                   {solutionItems.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-charcoal mt-1 shrink-0" />
-                      <span className="font-sans font-light text-charcoal/80">{item}</span>
+                    <li key={i} className="flex items-start gap-4 group">
+                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-1 shrink-0 group-hover:text-green-900 transition-colors" />
+                      <span className="font-sans font-light text-charcoal/80 leading-relaxed">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-
-              <div className="pt-8 border-t border-charcoal/10 mt-auto">
-                <p className="font-sans text-charcoal/70 text-base font-light leading-relaxed">
-                  With custom audio coaching from a celebrity makeup artist, you'll master makeup techniques tailored to your features and lifestyle—so you can look and feel like your best self.
-                </p>
-              </div>
             </div>
           </FadeIn>
         </div>
+
+        <p className="font-sans text-charcoal/70 text-base font-light leading-relaxed text-center max-w-2xl mx-auto">
+          With custom audio coaching from a celebrity makeup artist, you'll master makeup techniques tailored to your features and lifestyle—so you can look and feel like your best self.
+        </p>
       </div>
     </section>
   );
