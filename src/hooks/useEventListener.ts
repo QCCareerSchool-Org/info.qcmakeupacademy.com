@@ -9,12 +9,11 @@ export type Handler<E extends Event = Event> = (event: E) => void;
  * @param element the element to add the listener to
  */
 export const useEventListener = <
-  T extends HTMLElement = HTMLElement,
   E extends Event = Event,
 >(
   eventName: string,
   handler: Handler<E>,
-  element?: React.RefObject<T | null>,
+  element?: React.RefObject<HTMLElement | null | undefined>,
 ): void => {
   const savedHandler = useRef<Handler<E>>();
 
