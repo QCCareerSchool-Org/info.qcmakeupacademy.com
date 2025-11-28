@@ -3,27 +3,19 @@
 import { Play } from 'lucide-react';
 import Image from 'next/image';
 import type { FC } from 'react';
-import { useState } from 'react';
 
 import { FadeIn } from '../../../_components/fadeIn';
 import { Modal } from '../../../_components/modal';
 import NathanImage from './nathan.jpg';
+import { useToggle } from '@/hooks/useToggle';
 
 export const Instructor: FC = () => {
-  const [ isVideoOpen, setIsVideoOpen ] = useState(false);
-
-  const handleShow = (): void => {
-    setIsVideoOpen(true);
-  };
-
-  const handleHide = (): void => {
-    setIsVideoOpen(false);
-  };
+  const [ showVideo, handleShow, handleHide ] = useToggle();
 
   return (
     <section className="py-24 md:py-32 bg-linen-dark px-6 overflow-hidden">
       {/* Video Modal */}
-      <Modal show={isVideoOpen} onHide={handleHide}>
+      <Modal show={showVideo} onHide={handleHide}>
         <div className="w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl relative">
           <video src="https://32e10f05b345e8e8e33c-c7f4ae90fffa9b9f9644d0d7851e06ec.ssl.cf1.rackcdn.com/personal-makeup-nathan.mp4" width={1024} height={567} controls autoPlay />
         </div>
