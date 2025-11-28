@@ -51,9 +51,7 @@ export const Testimonials: FC = () => {
                 </p>
               </div>
               <p className="font-sans text-xs tracking-widest uppercase text-yellow-100 flex items-center">
-                <div className="h-12 w-12 rounded-full overflow-hidden me-4">
-                  <Image src={review.imageSrc} alt={review.author} />
-                </div>
+                <Image src={review.imageSrc} alt={review.author} className="h-12 w-12 rounded-full overflow-hidden me-4" />
                 {review.author}
               </p>
             </FadeIn>
