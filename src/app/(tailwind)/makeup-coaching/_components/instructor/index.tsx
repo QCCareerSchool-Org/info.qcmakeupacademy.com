@@ -8,14 +8,9 @@ import { useState } from 'react';
 import { FadeIn } from '../../../_components/fadeIn';
 import { Modal } from '../../../_components/modal';
 import NathanImage from './nathan.jpg';
-import { useEscapeKey } from '@/hooks/useEscapeKey';
 
 export const Instructor: FC = () => {
   const [ isVideoOpen, setIsVideoOpen ] = useState(false);
-
-  useEscapeKey(() => {
-    setIsVideoOpen(false);
-  });
 
   const handleShow = (): void => {
     setIsVideoOpen(true);

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import type { FC, PropsWithChildren } from 'react';
 
-import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useEscapeKeydown } from '@/hooks/useEscapeKeydown';
 
 interface Props {
   show: boolean;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Modal: FC<PropsWithChildren<Props>> = ({ show, onHide, children }) => {
-  useEscapeKey(onHide);
+  useEscapeKeydown(onHide);
 
   const handleHide = onHide;
 
