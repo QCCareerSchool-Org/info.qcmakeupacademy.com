@@ -6,8 +6,8 @@ import { ShieldCheck } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import type { FC } from 'react';
 
-import { Button } from '../../_components/button';
-import { FadeIn } from '../../_components/fadeIn';
+import { Button } from '../../../_components/button';
+import { FadeIn } from '../../../_components/fadeIn';
 
 interface Props {
   initialSpots?: number;
@@ -28,7 +28,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
   const [ spots, setSpots ] = useState(initialSpots ?? maxSpots);
   const countdownRef = useRef(null);
   const firstTimeout = useRef(true);
-  const isInView = useInView(countdownRef, { once: true, amount: 0.3 });
+  const isInView = useInView(countdownRef, { once: true, amount: 0.3 }); // Only track the first time
 
   useEffect(() => {
     // Only start if visible
@@ -37,16 +37,16 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
     // Stop countdown at 15 to maintain scarcity without going to zero
     if (spots <= 15) { return; }
 
-    // Randomized the delay
+    // Randomized delay
     // The first time is faster
-    const delay = firstTimeout.current ? (Math.floor(Math.random() * 4_000) + 4_000) : (Math.floor(Math.random() * 18_000) + 12_000);
+    const delay = firstTimeout.current ? (Math.floor(Math.random() * 4_000) + 4_000) : (Math.floor(Math.random() * 24_000) + 12_000);
 
     firstTimeout.current = false;
 
     const timer = setTimeout(() => {
       setSpots(prev => {
         const cur = prev - 1;
-        Cookies.set('spots', cur.toFixed(), { expires: 7, sameSite: 'strict', secure: true }); // store the value so it doesn't reset on reload
+        Cookies.set('spots', cur.toFixed(), { expires: 7, sameSite: 'strict', secure: true, path: '/makeup-coaching' }); // store the value so it doesn't reset on reload
         return cur;
       });
     }, delay);
@@ -108,8 +108,8 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
         </FadeIn>
       </div>
 
-      {/* Bonus Scarcity / Bottom CTA - Full Width */}
-      <div className="w-full bg-charcoal py-24 px-6" ref={countdownRef}>
+      {/* Bonus Scarcity / Bottom CTA */}
+      <div className="w-full bg-charcoal py-24 px-6">
         <FadeIn delay={0.2} className="text-center max-w-3xl mx-auto">
           <div>
             <h3 className="font-serif text-3xl md:text-4xl mb-4 text-white">Claim Your Spot Today</h3>
@@ -120,7 +120,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
             <div className="space-y-6 text-lg font-sans font-light leading-relaxed text-white/70 mb-10">
               <p>
                 The next
-                <span className="inline-block relative w-[2.5ch] h-[1.3em] align-bottom mx-1 overflow-hidden translate-y-[0.15em]">
+                <span ref={countdownRef} className="inline-block relative w-[2.5ch] h-[1.3em] align-bottom mx-1 overflow-hidden translate-y-[0.15em]">
                   <AnimatePresence mode="popLayout" initial={false}>
                     <motion.span
                       key={spots}
