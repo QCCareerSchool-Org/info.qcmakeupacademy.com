@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 
-// export type Handler = (event: Event) => void;
 export type Handler<E extends Event = Event> = (event: E) => void;
 
 /**
