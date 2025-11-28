@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useInView } from 'framer-motion';
 import Cookies from 'js-cookie';
 import { ShieldCheck } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import type { FC } from 'react';
 
 import { Button } from '../../../_components/button';
@@ -24,7 +24,7 @@ const includes = [
   { item: 'Custom Skincare Analysis and Routine Builder', value: '$100' },
 ];
 
-export const Pricing: FC<Props> = ({ initialSpots }) => {
+export const Pricing: FC<Props> = memo(({ initialSpots }) => {
   const [ spots, setSpots ] = useState(initialSpots ?? maxSpots);
   const countdownRef = useRef(null);
   const firstTimeout = useRef(true);
@@ -149,4 +149,6 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
       </div>
     </section>
   );
-};
+});
+
+Pricing.displayName = 'Pricing';

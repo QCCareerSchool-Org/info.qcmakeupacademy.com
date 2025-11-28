@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
 import { Button } from '../../../_components/button';
 import { FadeIn } from '../../../_components/fadeIn';
@@ -16,7 +16,7 @@ const scrollToPricing = (): void => {
   document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
 };
 
-export const Hero: FC = () => {
+export const Hero: FC = memo(() => {
   const [ index, setIndex ] = useState(0);
 
   // rotate through the words
@@ -85,4 +85,6 @@ export const Hero: FC = () => {
       </FadeIn>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';

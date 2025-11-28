@@ -2,14 +2,14 @@
 
 import { Play } from 'lucide-react';
 import Image from 'next/image';
-import type { FC } from 'react';
+import { type FC, memo } from 'react';
 
 import { FadeIn } from '../../../_components/fadeIn';
 import { Modal } from '../../../_components/modal';
 import NathanImage from './nathan.jpg';
 import { useToggle } from '@/hooks/useToggle';
 
-export const Instructor: FC = () => {
+export const Instructor: FC = memo(() => {
   const [ showVideo, handleShow, handleHide ] = useToggle();
 
   return (
@@ -65,4 +65,6 @@ export const Instructor: FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Instructor.displayName = 'Instructor';
