@@ -15,7 +15,7 @@ export const useEventListener = <
 >(
   eventName: string,
   handler: Handler<E>,
-  element?: React.RefObject<T | null>
+  element?: React.RefObject<T | null>,
 ): void => {
   const savedHandler = useRef<Handler<E>>();
 
@@ -25,7 +25,7 @@ export const useEventListener = <
       return;
     }
     savedHandler.current = handler;
-  }, [handler]);
+  }, [ handler ]);
 
   useEffect(() => {
     // Make sure the element supports addEventListener
@@ -36,7 +36,7 @@ export const useEventListener = <
     }
 
     // Create event listener that calls the handler stored in the ref
-    const eventListener: EventListener = (event) => {
+    const eventListener: EventListener = event => {
       // Safely check if the handler exists before calling it
       if (savedHandler.current) {
         savedHandler.current(event as E);
@@ -50,5 +50,5 @@ export const useEventListener = <
     return () => {
       targetElement.removeEventListener(eventName, eventListener);
     };
-  }, [eventName, element]);
-}
+  }, [ eventName, element ]);
+};
