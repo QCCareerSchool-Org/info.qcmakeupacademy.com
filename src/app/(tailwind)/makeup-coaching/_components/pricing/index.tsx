@@ -39,7 +39,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
 
     // Randomized delay
     // The first time is faster
-    const delay = firstTimeout.current ? (Math.floor(Math.random() * 4_000) + 4_000) : (Math.floor(Math.random() * 24_000) + 12_000);
+    const delay = firstTimeout.current ? (Math.floor(Math.random() * 4_000) + 4_000) : (Math.floor(Math.random() * 60_000) + 90_000);
 
     firstTimeout.current = false;
 
@@ -109,7 +109,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
       </div>
 
       {/* Bonus Scarcity / Bottom CTA */}
-      <div className="w-full bg-charcoal py-24 px-6">
+      <div className="w-full bg-charcoal text-white/90 py-24 px-6">
         <FadeIn delay={0.2} className="text-center max-w-3xl mx-auto">
           <div>
             <h3 className="font-serif text-3xl md:text-4xl mb-4 text-white">Claim Your Spot Today</h3>
@@ -117,7 +117,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
               Learn Makeup Techniques Designed for You
             </p>
 
-            <div className="space-y-6 text-lg font-sans font-light leading-relaxed text-white/70 mb-10">
+            <div className="space-y-6 text-lg font-sans font-light leading-relaxed mb-10">
               <p>
                 The next
                 <span ref={countdownRef} className="inline-block relative w-[2.5ch] h-[1.3em] align-bottom mx-1 overflow-hidden translate-y-[0.15em]">
@@ -136,7 +136,7 @@ export const Pricing: FC<Props> = ({ initialSpots }) => {
                 </span>
                 students will receive Nathan's <strong className="text-white font-bold">Personal Guide to Youthful-Looking Skin</strong>, a curated roadmap of skincare and makeup essentials designed for your features and style.
               </p>
-              <p className="text-white/70 text-base md:text-lg">
+              <p className="text-base md:text-lg">
                 Learn personalized techniques from a celebrity makeup artist and turn your daily routine into a quick, empowering self-care ritual that leaves you feeling polished, radiant, and like yourself again.
               </p>
             </div>
