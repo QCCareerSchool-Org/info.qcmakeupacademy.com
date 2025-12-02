@@ -37,49 +37,39 @@ type Props = {
 
 export const BrevoForm: FC<Props> = props => {
   const id = useId();
-  const [ firstName, setFirstName ] = useState('');
-  const [ lastName, setLastName ] = useState('');
-  const [ city, setCity ] = useState('');
+  const [ nonce, setNonce ] = useState('');
+  const randomName = useRef(Math.random().toString(36).slice(2));
   const [ telephoneNumber, setTelephoneNumber ] = useState<Value>();
-  const [ emailAddress, setEmailAddress ] = useState('');
-  const [ token, setToken ] = useState<string>();
+  const [ token, setToken ] = useState<string>('');
   const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
   const submitting = useRef(false);
   const [ disabled, setDisabled ] = useState(true);
-  const [ telephoneNumberE164, setTelephoneNumberE164 ] = useState('');
 
-  const handleFirstNameChange: ChangeEventHandler<HTMLInputElement> = e => {
-    setFirstName(e.target.value);
-  };
-
-  const handleLastNameChange: ChangeEventHandler<HTMLInputElement> = e => {
-    setLastName(e.target.value);
-  };
-
-  const handleCityChange: ChangeEventHandler<HTMLInputElement> = e => {
-    setCity(e.target.value);
-  };
+  useEffect(() => {
+    setNonce(v1());
+  }, []);
 
   const handleTelephoneNumberChange = (value?: Value): void => {
     setTelephoneNumber(value);
-  };
-
-  const handleEmailAddressChange: ChangeEventHandler<HTMLInputElement> = e => {
-    setEmailAddress(e.target.value);
   };
 
   const handleVerify = useCallback((t: string): void => {
     setToken(t);
   }, []);
 
-  // Google reCaptcha token expires after 2 minutes
+  // Periodically refresh the token because it expires after 2 minutes
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const updateToken = (): void => {
       setRefreshReCaptcha(r => !r);
-    }, 90_000); // 90 seconds
+    };
+
+    const intervalId = setInterval(updateToken, 90_000); // every 90 seconds
+
+    window.addEventListener('focus', updateToken); // whenever the window regains focus
 
     return (): void => {
       clearInterval(intervalId);
+      window.removeEventListener('focus', updateToken);
     };
   }, []);
 
@@ -102,6 +92,8 @@ export const BrevoForm: FC<Props> = props => {
 
     setTimeout(() => { submitting.current = false; }, 10_000);
 
+    setNonce(v1());
+
     return true;
   };
 
@@ -109,9 +101,7 @@ export const BrevoForm: FC<Props> = props => {
   // if we try to use telephoneNumber directly there is an issue:
   // removing the telephone number from the visible field doesn't remove the value from the hidden field
   // if we try to use the <PhoneInput /> component directly, we don't get the correct format in the back end
-  useEffect(() => {
-    setTelephoneNumberE164(telephoneNumber ?? '');
-  }, [ telephoneNumber ]);
+  const telephoneNumberE164 = telephoneNumber ?? '';
 
   return (
     <form action="https://leads.qccareerschool.com" method="post" className={styles.brochureForm} onSubmit={handleSubmit}>
@@ -119,7 +109,7 @@ export const BrevoForm: FC<Props> = props => {
       <input type="hidden" name="school" value="QC Makeup Academy" />
       <input type="hidden" name="successLocation" value={props.successLocation} />
       <input type="hidden" name="listId" value={props.listId} />
-      <input type="hidden" name="nonce" value={v1()} />
+      <input type="hidden" name="nonce" value={nonce} />
       {props.courseCodes?.map(c => <input key={c} type="hidden" name="courseCodes" value={c} />)}
       {typeof props.emailTemplateId !== 'undefined' && <input type="hidden" name="emailTemplateId" value={props.emailTemplateId} />}
       {props.gclid && <input type="hidden" name="gclid" value={props.gclid} />}
@@ -132,13 +122,13 @@ export const BrevoForm: FC<Props> = props => {
       {props.referrer && <input type="hidden" name="referrer" value={props.referrer} />}
       <div className="mb-3">
         {!props.placeholders && <label htmlFor={`${id}firstName`} className="form-label">Name</label>}
-        <input onChange={handleFirstNameChange} value={firstName} type="text" name="firstName" id={`${id}firstName`} className="form-control" placeholder={props.placeholders ? 'Name' : undefined} autoComplete="given-name" autoCapitalize="words" />
+        <input type="text" name="firstName" id={`${id}firstName`} className="form-control" placeholder={props.placeholders ? 'Name' : undefined} autoComplete="given-name" autoCapitalize="words" />
       </div>
-      <input onChange={handleLastNameChange} value={lastName} type="hidden" name="lastName" id={`${id}lastName`} />
-      <input onChange={handleCityChange} value={city} type="text" name="hp_city" id={`${id}city`} style={{ position: 'absolute', left: -9999, top: 'auto', width: 1, height: 1, overflow: 'hidden' }} tabIndex={-1} autoComplete="new-password" />
+      <input type="hidden" name="lastName" id={`${id}lastName`} />
+      <input type="text" name={`hp_${randomName.current}`} style={{ position: 'absolute', left: -9999, top: 'auto', width: 1, height: 1, overflow: 'hidden' }} tabIndex={-1} autoComplete="off" />
       <div className="mb-3">
         {!props.placeholders && <label htmlFor={`${id}emailAddress`} className="form-label">Email <span className="text-primary">*</span></label>}
-        <input onChange={handleEmailAddressChange} value={emailAddress} type="email" name="emailAddress" id={`${id}emailAddress`} className={`form-control ${styles.emailAddressInput}`} placeholder={props.placeholders ? 'Email *' : undefined} required autoComplete="email" autoCapitalize="none" />
+        <input type="email" name="emailAddress" id={`${id}emailAddress`} className={`form-control ${styles.emailAddressInput}`} placeholder={props.placeholders ? 'Email *' : undefined} required autoComplete="email" autoCapitalize="none" />
       </div>
       {(props.countryCode === 'CA' || props.countryCode === 'US') && typeof props.telephoneListId !== 'undefined' && (
         <>
