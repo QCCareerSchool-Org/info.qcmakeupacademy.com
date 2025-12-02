@@ -37,17 +37,15 @@ type Props = {
 
 export const BrevoForm: FC<Props> = props => {
   const id = useId();
-  const [ nonce, setNonce ] = useState('');
-  const randomName = useRef(Math.random().toString(36).slice(2));
+  const [ nonce, setNonce ] = useState(() => v1());
+  const randomName = useId();
   const [ telephoneNumber, setTelephoneNumber ] = useState<Value>();
   const [ token, setToken ] = useState<string>('');
   const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
   const submitting = useRef(false);
   const [ disabled, setDisabled ] = useState(true);
 
-  useEffect(() => {
-    setNonce(v1());
-  }, []);
+  const showTelephone = props.countryCode === 'CA' || props.countryCode === 'US';
 
   const handleTelephoneNumberChange = (value?: Value): void => {
     setTelephoneNumber(value);
@@ -57,7 +55,7 @@ export const BrevoForm: FC<Props> = props => {
     setToken(t);
   }, []);
 
-  // Periodically refresh the token because it expires after 2 minutes
+  // periodically refresh the token because it expires after 2 minutes
   useEffect(() => {
     const updateToken = (): void => {
       setRefreshReCaptcha(r => !r);
@@ -73,6 +71,7 @@ export const BrevoForm: FC<Props> = props => {
     };
   }, []);
 
+  // enable the submit button after 1 second
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setDisabled(false);
@@ -86,15 +85,14 @@ export const BrevoForm: FC<Props> = props => {
   const handleSubmit: FormEventHandler = e => {
     if (submitting.current || disabled) {
       e.preventDefault();
-      return false;
+      return;
     }
+
     submitting.current = true;
 
     setTimeout(() => { submitting.current = false; }, 10_000);
 
     setNonce(v1());
-
-    return true;
   };
 
   // neeed so that we send the telephone number in the correct format
@@ -105,11 +103,11 @@ export const BrevoForm: FC<Props> = props => {
 
   return (
     <form action="https://leads.qccareerschool.com" method="post" className={styles.brochureForm} onSubmit={handleSubmit}>
+      <input type="hidden" name="nonce" value={nonce} />
       <input type="hidden" name="g-recaptcha-response" value={token} />
       <input type="hidden" name="school" value="QC Makeup Academy" />
       <input type="hidden" name="successLocation" value={props.successLocation} />
       <input type="hidden" name="listId" value={props.listId} />
-      <input type="hidden" name="nonce" value={nonce} />
       {props.courseCodes?.map(c => <input key={c} type="hidden" name="courseCodes" value={c} />)}
       {typeof props.emailTemplateId !== 'undefined' && <input type="hidden" name="emailTemplateId" value={props.emailTemplateId} />}
       {props.gclid && <input type="hidden" name="gclid" value={props.gclid} />}
@@ -125,12 +123,12 @@ export const BrevoForm: FC<Props> = props => {
         <input type="text" name="firstName" id={`${id}firstName`} className="form-control" placeholder={props.placeholders ? 'Name' : undefined} autoComplete="given-name" autoCapitalize="words" />
       </div>
       <input type="hidden" name="lastName" id={`${id}lastName`} />
-      <input type="text" name={`hp_${randomName.current}`} style={{ position: 'absolute', left: -9999, top: 'auto', width: 1, height: 1, overflow: 'hidden' }} tabIndex={-1} autoComplete="off" />
+      <input type="text" name={`hp_${randomName}`} style={{ position: 'absolute', left: -9999, top: 'auto', width: 1, height: 1, overflow: 'hidden' }} tabIndex={-1} autoComplete="off" />
       <div className="mb-3">
         {!props.placeholders && <label htmlFor={`${id}emailAddress`} className="form-label">Email <span className="text-primary">*</span></label>}
         <input type="email" name="emailAddress" id={`${id}emailAddress`} className={`form-control ${styles.emailAddressInput}`} placeholder={props.placeholders ? 'Email *' : undefined} required autoComplete="email" autoCapitalize="none" />
       </div>
-      {(props.countryCode === 'CA' || props.countryCode === 'US') && typeof props.telephoneListId !== 'undefined' && (
+      {showTelephone && typeof props.telephoneListId !== 'undefined' && (
         <>
           <input type="hidden" name="telephoneListId" value={props.telephoneListId} />
           <div className="mb-3">
