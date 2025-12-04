@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const JavasciptInput: FC<Props> = ({ name }) => {
-  const ref = useRef<HTMLInputElement>(null)
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (ref.current) {
