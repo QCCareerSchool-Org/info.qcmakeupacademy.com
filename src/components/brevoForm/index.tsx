@@ -13,6 +13,7 @@ import { v1 } from 'uuid';
 
 import { CurrentPageInput } from './currentPageInput';
 import styles from './index.module.scss';
+import { JavasciptInput } from './javascriptInput';
 import DownloadIcon from '@/components/download.svg';
 
 type Props = {
@@ -45,7 +46,6 @@ export const BrevoForm: FC<Props> = props => {
   const [ refreshReCaptcha, setRefreshReCaptcha ] = useState(false);
   const submitting = useRef(false);
   const [ disabled, setDisabled ] = useState(true);
-  const [ javascriptEnabled, setJavasciptEnabled ] = useState(false);
 
   const showTelephone = props.countryCode === 'CA' || props.countryCode === 'US';
 
@@ -55,10 +55,6 @@ export const BrevoForm: FC<Props> = props => {
 
   const handleVerify = useCallback((t: string): void => {
     setToken(t);
-  }, []);
-
-  useEffect(() => {
-    setJavasciptEnabled(true);
   }, []);
 
   // periodically refresh the token because it expires after 2 minutes
@@ -110,7 +106,7 @@ export const BrevoForm: FC<Props> = props => {
   return (
     <form action="https://leads.qccareerschool.com" method="post" className={styles.brochureForm} onSubmit={handleSubmit}>
       <CurrentPageInput />
-      <input type="hidden" name="javascript" value={javascriptEnabled ? 'enabled' : 'disabled'} />
+      <JavasciptInput />
       <input type="hidden" name="nonce" value={nonce} />
       <input type="hidden" name="g-recaptcha-response" value={token} />
       <input type="hidden" name="school" value="QC Makeup Academy" />
