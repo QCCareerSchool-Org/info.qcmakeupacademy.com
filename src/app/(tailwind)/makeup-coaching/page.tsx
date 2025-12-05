@@ -8,6 +8,7 @@ import { Instructor } from './_components/instructor';
 import { Pricing } from './_components/pricing';
 import { ProblemSolution } from './_components/problemSolution';
 import { Testimonials } from './_components/testimonials';
+import { Header } from '../_components/header';
 
 export const metadata: Metadata = {
   title: 'Makeup Coaching',
@@ -19,15 +20,17 @@ const MakeupCoachingPage: FC = async () => {
   const initialSpotsCookie = cookieStore.get('spots');
 
   const initialSpots = typeof initialSpotsCookie === 'undefined' ? undefined : parseInt(initialSpotsCookie.value, 10);
+  const enrollmentHref = 'https://enroll.qcmakeupacademy.com/makeup-coaching';
 
   return (
     <>
+      <Header buttonHref={enrollmentHref} />
       <Hero />
       <ProblemSolution />
       <Instructor />
       <Curriculum />
       <Testimonials />
-      <Pricing initialSpots={initialSpots} />
+      <Pricing buttonHref={enrollmentHref} initialSpots={initialSpots} />
     </>
   );
 };

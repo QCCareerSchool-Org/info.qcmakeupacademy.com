@@ -10,6 +10,7 @@ import { Button } from '../../../_components/button';
 import { FadeIn } from '../../../_components/fadeIn';
 
 interface Props {
+  buttonHref: string;
   initialSpots?: number;
 }
 
@@ -24,7 +25,7 @@ const includes = [
   { item: 'Custom Skincare Analysis and Routine Builder', value: '$100' },
 ];
 
-export const Pricing: FC<Props> = memo(({ initialSpots }) => {
+export const Pricing: FC<Props> = memo(({ initialSpots, buttonHref }) => {
   const [ spots, setSpots ] = useState(initialSpots ?? maxSpots);
   const countdownRef = useRef(null);
   const firstTimeout = useRef(true);
@@ -140,9 +141,11 @@ export const Pricing: FC<Props> = memo(({ initialSpots }) => {
               </p>
             </div>
 
-            <Button variant="primary" className="px-12 py-4 text-lg w-full md:w-auto border-transparent hover:border-white/20">
-              Start Today
-            </Button>
+            <a href={buttonHref}>
+              <Button variant="primary" className="px-12 py-4 text-lg w-full md:w-auto border-transparent hover:border-white/20">
+                Start Today
+              </Button>
+            </a>
           </div>
         </FadeIn>
       </div>

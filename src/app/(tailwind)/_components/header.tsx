@@ -5,7 +5,11 @@ import { useEffect, useState } from 'react';
 
 import { Button } from './button';
 
-export const Header: FC = () => {
+interface Props {
+  buttonHref?: string;
+}
+
+export const Header: FC<Props> = ({ buttonHref = 'https://enroll.qcmakeupacademy.com' }) => {
   const [ showStickyNav, setShowStickyNav ] = useState(false);
 
   useEffect(() => {
@@ -36,9 +40,11 @@ export const Header: FC = () => {
             <span className="font-sans text-xs uppercase tracking-widest text-charcoal/60 hidden md:block">
               Limited spots available
             </span>
-            <Button onClick={handleClick} className="py-2 px-6 text-xs">
-              Join Now
-            </Button>
+            <a href={buttonHref}>
+              <Button onClick={handleClick} className="py-2 px-6 text-xs">
+                Join Now
+              </Button>
+            </a>
           </div>
         </div>
       </div>
