@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import type { FC } from 'react';
 
@@ -7,6 +8,11 @@ import { Instructor } from './_components/instructor';
 import { Pricing } from './_components/pricing';
 import { ProblemSolution } from './_components/problemSolution';
 import { Testimonials } from './_components/testimonials';
+
+export const metadata: Metadata = {
+  title: 'Makeup Coaching',
+  alternates: { canonical: 'https://info.qcmakeupacademy.com/makeup-coaching' },
+};
 
 const MakeupCoachingPage: FC = async () => {
   const cookieStore = await cookies();

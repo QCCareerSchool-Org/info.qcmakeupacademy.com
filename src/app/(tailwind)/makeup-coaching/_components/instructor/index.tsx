@@ -37,7 +37,7 @@ export const Instructor: FC = memo(() => {
           </div>
 
           {/* Decorative Elements */}
-          <div className="absolute -top-6 -left-6 w-full h-full border border-charcoal/30 z-0 hidden md:block max-w-md mx-auto left-0 right-0 mx-0 md:left-[-24px] md:right-6" />
+          {/* <div className="absolute -top-6 -left-6 w-full h-full border border-charcoal/30 z-0 hidden md:block max-w-md mx-auto left-0 right-0 mx-0 md:left-[-24px] md:right-6" /> */}
         </FadeIn>
 
         {/* Text Content */}
@@ -47,7 +47,7 @@ export const Instructor: FC = memo(() => {
               Your Personal Makeup Coach
             </span>
             <h2 className="font-serif text-4xl md:text-5xl mb-8 leading-tight">
-              Meet Nathan Johnson.
+              Meet Nathan Johnson
             </h2>
             <div className="space-y-6 font-sans text-lg font-light text-charcoal/80 leading-relaxed">
               <p>

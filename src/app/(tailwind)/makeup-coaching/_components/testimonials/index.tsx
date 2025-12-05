@@ -2,10 +2,12 @@ import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import { type FC, memo } from 'react';
 
+import HeroImage from './background.jpg';
 import CarolynWImage from './carolyn-w.jpg';
 import IsabellaSImage from './isabella-s.jpg';
 import VioletaGImage from './violeta-g.jpg';
 import { FadeIn } from '../../../_components/fadeIn';
+import { BackgroundImage } from '@/components/backgroundImage';
 
 export interface Testimonial {
   text: string;
@@ -32,15 +34,16 @@ const reviews: Testimonial[] = [
 ];
 
 export const Testimonials: FC = memo(() => (
-  <section className="py-24 bg-charcoal text-linen-dark px-6">
-    <div className="max-w-6xl mx-auto">
+  <section className="py-24 bg-charcoal text-linen-dark px-6 relative">
+    <BackgroundImage src={HeroImage} />
+    <div className="max-w-6xl mx-auto relative">
       <FadeIn className="text-center mb-16">
         <h2 className="font-serif text-3xl md:text-4xl text-white">Stories of Confidence</h2>
       </FadeIn>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {reviews.map((review, i) => (
-          <FadeIn key={i} delay={i * 0.1} className="bg-charcoal-light/30 p-8 border border-white/10 flex flex-col justify-between">
+          <FadeIn key={i} delay={i * 0.1} className="bg-charcoal/95 p-8 border border-white/10 flex flex-col justify-between">
             <div className="mb-6">
               {/* Stars placeholder */}
               <div className="flex gap-1 text-yellow-100 mb-4">
@@ -51,7 +54,7 @@ export const Testimonials: FC = memo(() => (
               </p>
             </div>
             <p className="font-sans text-xs tracking-widest uppercase text-yellow-100 flex items-center">
-              <Image src={review.imageSrc} alt={review.author} className="h-12 w-12 rounded-full overflow-hidden me-4" />
+              <Image src={review.imageSrc} alt={review.author} className="h-16 w-16 rounded-full overflow-hidden me-4" />
               {review.author}
             </p>
           </FadeIn>

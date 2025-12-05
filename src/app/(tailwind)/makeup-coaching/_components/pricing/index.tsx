@@ -63,33 +63,32 @@ export const Pricing: FC<Props> = memo(({ initialSpots }) => {
 
             <div className="text-center mb-12">
               <span className="font-sans text-xs font-bold tracking-[0.3em] uppercase text-charcoal/40">
-                Exclusive Program
+                Your Investment In Yourself
               </span>
-              <h2 className="font-serif text-4xl md:text-5xl mt-4 mb-2 text-charcoal">Your Investment In Yourself</h2>
+              <h2 className="font-serif text-4xl md:text-5xl mt-4 mb-2 text-charcoal">What's Included in Your Program</h2>
               <div className="w-12 h-0.5 bg-charcoal mx-auto mt-6" />
             </div>
 
             <div className="space-y-4 mb-12">
               {includes.map((inc, i) => (
-                <div key={i} className="flex justify-between items-end border-b border-dashed border-charcoal/20 pb-2">
+                <div key={i} className="grid grid-cols-[1fr_auto] items-end border-b border-dashed border-charcoal/20 pb-2">
                   <span className="font-serif text-lg text-charcoal/80">{inc.item}</span>
                   <span className="font-sans text-sm text-charcoal/40 ml-4 tabular-nums">{inc.value} Value</span>
                 </div>
               ))}
-              <div className="flex justify-between items-center pt-4">
+              <div className="grid grid-cols-[1fr_auto] items-end pt-4">
                 <span className="font-sans font-bold text-charcoal/50 uppercase tracking-wider">Total Value</span>
-                <span className="font-sans font-bold text-charcoal/50 line-through decoration-1">$850+</span>
+                <span className="font-sans font-bold text-charcoal/50 decoration-1">$850+</span>
+              </div>
+              <div className="grid grid-cols-[1fr_auto] items-end">
+                <span className="font-sans font-bold text-charcoal/80 uppercase tracking-wider">Your Investment</span>
+                <span className="font-serif font-bold text-charcoal/80 decoration-1 text-2xl">$350</span>
               </div>
             </div>
 
-            <div className="text-center bg-linen/50 p-8 mb-10 border border-charcoal/5">
-              <p className="font-sans text-sm uppercase tracking-widest mb-2 text-charcoal/60">Secure Your Access For Only</p>
-              <p className="font-serif text-6xl text-charcoal">$398</p>
-            </div>
-
             <div className="space-y-4">
-              <Button fullWidth variant="primary" className="text-lg py-5">
-                Get Access Now
+              <Button fullWidth variant="primary" className="text-lg md:text-xl py-5">
+                <span className="text-white/80 font-normal">Start Now For Only <span className="font-bold"><span className="line-through">$850</span> <span className="text-white">$350</span></span></span>
               </Button>
             </div>
 
@@ -113,7 +112,7 @@ export const Pricing: FC<Props> = memo(({ initialSpots }) => {
         <FadeIn delay={0.2} className="text-center max-w-3xl mx-auto">
           <div>
             <h3 className="font-serif text-3xl md:text-4xl mb-4 text-white">Claim Your Spot Today</h3>
-            <p className="font-sans text-sm font-bold tracking-[0.2em] uppercase text-almond mb-8">
+            <p className="font-sans text-sm font-bold tracking-[0.2em] uppercase text-amber-100 mb-8">
               Learn Makeup Techniques Designed for You
             </p>
 
@@ -141,7 +140,7 @@ export const Pricing: FC<Props> = memo(({ initialSpots }) => {
               </p>
             </div>
 
-            <Button variant="white" className="px-12 py-4 text-lg w-full md:w-auto border-transparent hover:border-white/20">
+            <Button variant="primary" className="px-12 py-4 text-lg w-full md:w-auto border-transparent hover:border-white/20">
               Start Today
             </Button>
           </div>
