@@ -19,16 +19,13 @@ export const useEventListener = <
 
   // Keep track of the latest handler
   useEffect(() => {
-    if (!handler) {
-      return;
-    }
     savedHandler.current = handler;
   }, [ handler ]);
 
   useEffect(() => {
     // Make sure the element supports addEventListener
     const targetElement = element?.current ?? window;
-    const isSupported = targetElement && 'addEventListener' in targetElement;
+    const isSupported = 'addEventListener' in targetElement;
     if (!isSupported) {
       return;
     }
@@ -36,9 +33,7 @@ export const useEventListener = <
     // Create event listener that calls the handler stored in the ref
     const eventListener: EventListener = event => {
       // Safely check if the handler exists before calling it
-      if (savedHandler.current) {
-        savedHandler.current(event as E);
-      }
+      savedHandler.current?.(event as E);
     };
 
     // Add event listener

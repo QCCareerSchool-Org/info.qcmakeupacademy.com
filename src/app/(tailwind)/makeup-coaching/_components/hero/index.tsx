@@ -12,7 +12,7 @@ import { BackgroundImage } from '@/components/backgroundImage';
 
 const words = [ 'Beautiful.', 'Confident.', 'Effortlessly You.' ];
 
-const scrollToPricing = (): void => {
+const handleClick = (): void => {
   document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
 };
 
@@ -73,7 +73,7 @@ export const Hero: FC = memo(() => {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <Button variant="primary" onClick={scrollToPricing}>
+            <Button variant="primary" onClick={handleClick}>
               Secure Your Spot
             </Button>
           </FadeIn>

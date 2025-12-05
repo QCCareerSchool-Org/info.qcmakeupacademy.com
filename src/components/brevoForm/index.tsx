@@ -32,7 +32,7 @@ interface Props {
   utmContent?: string;
   utmTerm?: string;
   courseCodes?: string[];
-  button?: ReactElement<any>;
+  button?: ReactElement;
   referrer: string | null;
   telephoneListId?: number;
   countryCode?: string | null;
@@ -170,8 +170,8 @@ interface InputProps {
 }
 
 const InputComponent = forwardRef<HTMLInputElement, DefaultInputComponentProps>((props, ref) => {
-  const { value, onChange, name } = props as InputProps;
-  return <input ref={ref} name={name} type="tel" value={value} onChange={onChange} className="form-control" placeholder="Phone (Optional)" />;
+  const { value, onChange: handleChange, name } = props as InputProps;
+  return <input ref={ref} name={name} type="tel" value={value} onChange={handleChange} className="form-control" placeholder="Phone (Optional)" />;
 });
 
 InputComponent.displayName = 'InputComponent';

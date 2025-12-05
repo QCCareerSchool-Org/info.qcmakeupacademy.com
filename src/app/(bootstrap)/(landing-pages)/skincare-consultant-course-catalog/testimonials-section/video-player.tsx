@@ -10,8 +10,8 @@ interface Props {
   onPlay?: () => void;
 }
 
-export const VideoPlayer = forwardRef<HTMLVideoElement, Props>(({ src, poster, type = 'video/mp4', onPlay }, ref) => (
-  <video ref={ref} onPlay={onPlay} controls preload="auto" className={styles.video} poster={poster ? poster.src : undefined}>
+export const VideoPlayer = forwardRef<HTMLVideoElement, Props>(({ src, poster, type = 'video/mp4', onPlay: handlePlay }, ref) => (
+  <video ref={ref} onPlay={handlePlay} controls preload="auto" className={styles.video} poster={poster ? poster.src : undefined}>
     <source src={src} type={type} />
   </video>
 ));

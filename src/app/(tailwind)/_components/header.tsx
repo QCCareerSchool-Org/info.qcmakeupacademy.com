@@ -22,7 +22,7 @@ export const Header: FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToPricing = (): void => {
+  const handleClick = (): void => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -36,7 +36,7 @@ export const Header: FC = () => {
             <span className="font-sans text-xs uppercase tracking-widest text-charcoal/60 hidden md:block">
               Limited spots available
             </span>
-            <Button onClick={scrollToPricing} className="py-2 px-6 text-xs">
+            <Button onClick={handleClick} className="py-2 px-6 text-xs">
               Join Now
             </Button>
           </div>

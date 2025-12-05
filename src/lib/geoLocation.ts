@@ -20,7 +20,7 @@ export const writeGeoLocation = (geoLocation: GeoLocation): void => {
   Cookies.set('location', JSON.stringify(geoLocation), { secure: true, sameSite: 'strict' });
 };
 
-export const fetchGeoLocation = async (): Promise<GeoLocation | void> => {
+export const fetchGeoLocation = async (): Promise<GeoLocation | undefined> => {
   const url = 'https://api.qccareerschool.com/geoLocation/ip';
   try {
     const response = await fetch(url);
@@ -32,7 +32,7 @@ export const fetchGeoLocation = async (): Promise<GeoLocation | void> => {
       throw Error('Invalid geo location');
     }
     return data;
-  } catch (err) { /* empty */ }
+  } catch { /* empty */ }
 };
 
 export const isGeoLocation = (obj: unknown): obj is GeoLocation => {

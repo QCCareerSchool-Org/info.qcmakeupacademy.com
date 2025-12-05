@@ -10,7 +10,7 @@ interface Data {
 }
 
 export const getData = async (): Promise<Data> => {
-  const [ headerList, cookieStore ] = await Promise.all([headers(), cookies()]);
+  const [ headerList, cookieStore ] = await Promise.all([ headers(), cookies() ]);
 
   const countryCode = headerList.get('x-vercel-ip-country') ?? 'US';
   const provinceCode = headerList.get('x-vercel-ip-country-region');
