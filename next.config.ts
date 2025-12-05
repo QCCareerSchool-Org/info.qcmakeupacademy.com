@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+
 const nextConfig: NextConfig = {
   sassOptions: {
     quietDeps: true, // hide deprecation warnings from node_modules
@@ -7,4 +8,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
