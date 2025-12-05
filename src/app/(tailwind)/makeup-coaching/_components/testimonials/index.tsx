@@ -41,7 +41,7 @@ export const Testimonials: FC = memo(() => (
         <h2 className="font-serif text-3xl md:text-4xl text-white">Stories of Confidence</h2>
       </FadeIn>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {reviews.map((review, i) => (
           <FadeIn key={i} delay={i * 0.1} className="bg-charcoal/95 p-8 border border-white/10 flex flex-col justify-between">
             <div className="mb-6">
