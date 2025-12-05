@@ -1,6 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
+
 import { useOrigin } from '../../hooks/useOrigin';
 
 export const CurrentPageInput: FC = () => {

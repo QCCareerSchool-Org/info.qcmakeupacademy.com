@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import type { FC } from 'react';
 
 import styles from './index.module.scss';
 import CertificationDesktopImage from './sk-certification-desktop-2.jpg';

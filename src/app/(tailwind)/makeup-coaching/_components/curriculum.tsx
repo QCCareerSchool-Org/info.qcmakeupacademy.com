@@ -1,6 +1,6 @@
 import { Check, Play, Sparkles, Star, User } from 'lucide-react';
-import React, { memo } from 'react';
 import type { FC } from 'react';
+import React, { memo } from 'react';
 
 import { FadeIn } from '../../_components/fadeIn';
 

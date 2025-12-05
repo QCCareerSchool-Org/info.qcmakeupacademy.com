@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+
 import { ScrollPositionContext } from '@/providers/scrollPosition';
 
 export const useScrollPosition = (): number => {

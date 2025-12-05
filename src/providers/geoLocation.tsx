@@ -2,14 +2,16 @@
 
 import type { FC, ReactNode } from 'react';
 import { createContext, useEffect, useState } from 'react';
-import { GeoLocation, getGeoLocation } from '@/lib/geoLocation';
+
+import type { GeoLocation } from '@/lib/geoLocation';
+import { getGeoLocation } from '@/lib/geoLocation';
 
 export const GeoLocationContext = createContext<GeoLocation | undefined>(undefined);
 
-type Props = {
+interface Props {
   storedValue?: GeoLocation;
   children: ReactNode;
-};
+}
 
 const defaultValue: GeoLocation = {
   countryCode: 'US',

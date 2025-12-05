@@ -9,7 +9,7 @@ import { TestimonialsSection } from './testimonials-section';
 import { VideoSection } from './video-section';
 import { getData } from '@/lib/getData';
 
-type Props = {
+interface Props {
   alt?: boolean;
   gclid?: string;
   msclkid?: string;
@@ -19,10 +19,10 @@ type Props = {
   utmContent?: string;
   utmTerm?: string;
   referrer: string | null;
-};
+}
 
-export const SkincareConsultant: FC<Props> = props => {
-  const { countryCode } = getData();
+export const SkincareConsultant: FC<Props> = async props => {
+  const { countryCode } = await getData();
 
   return (
     <>

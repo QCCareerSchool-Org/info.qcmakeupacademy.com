@@ -3,8 +3,8 @@
 import { AnimatePresence, motion, useInView } from 'framer-motion';
 import Cookies from 'js-cookie';
 import { ShieldCheck } from 'lucide-react';
-import { memo, useEffect, useRef, useState } from 'react';
 import type { FC } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 
 import { Button } from '../../../_components/button';
 import { FadeIn } from '../../../_components/fadeIn';

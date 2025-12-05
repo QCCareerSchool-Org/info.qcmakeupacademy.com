@@ -4,9 +4,9 @@ import { Play } from 'lucide-react';
 import Image from 'next/image';
 import { type FC, memo } from 'react';
 
+import NathanImage from './nathan.jpg';
 import { FadeIn } from '../../../_components/fadeIn';
 import { Modal } from '../../../_components/modal';
-import NathanImage from './nathan.jpg';
 import { useToggle } from '@/hooks/useToggle';
 
 export const Instructor: FC = memo(() => {

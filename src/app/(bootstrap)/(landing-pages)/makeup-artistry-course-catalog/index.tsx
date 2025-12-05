@@ -9,7 +9,7 @@ import { StartTodaySection } from './start-today-section';
 import { TestimonialSection } from './testimonial-section';
 import { getData } from '@/lib/getData';
 
-type Props = {
+interface Props {
   gclid?: string;
   msclkid?: string;
   utmSource?: string;
@@ -18,10 +18,10 @@ type Props = {
   utmContent?: string;
   utmTerm?: string;
   referrer: string | null;
-};
+}
 
-export const MakeupArtistry: FC<Props> = props => {
-  const { countryCode } = getData();
+export const MakeupArtistry: FC<Props> = async props => {
+  const { countryCode } = await getData();
 
   return (
     <>

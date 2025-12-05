@@ -1,4 +1,5 @@
-import { RefObject } from 'react';
+import type { RefObject } from 'react';
+
 import { useEventListener } from './useEventListener';
 
 export const useRightClick = (callback: (e: MouseEvent) => void, element?: RefObject<HTMLElement | null | undefined>): void => {

@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+
 import { ScreenWidthContext } from '@/providers/screenWidth';
 
 export const useScreenWidth = (): number => {

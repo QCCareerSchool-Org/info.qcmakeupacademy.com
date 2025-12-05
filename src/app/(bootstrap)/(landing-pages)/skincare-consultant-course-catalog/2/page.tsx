@@ -1,7 +1,8 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { headers } from 'next/headers';
+
 import { SkincareConsultant } from '..';
-import { PageComponent } from '@/app/serverComponent';
+import type { PageComponent } from '@/app/serverComponent';
 import { getParam } from '@/lib/getParam';
 
 export const metadata: Metadata = {
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://info.qcmakeupacademy.com/skincare-consultant-course-catalog' },
 };
 
-const SkincareConsultantAltPage: PageComponent = ({ searchParams }) => {
+const SkincareConsultantAltPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const gclid = getParam(searchParams.gclid);
   const msclkid = getParam(searchParams.msclkid);
   const utmSource = getParam(searchParams.utm_source);
@@ -18,7 +20,7 @@ const SkincareConsultantAltPage: PageComponent = ({ searchParams }) => {
   const utmCampaign = getParam(searchParams.utm_campaign);
   const utmContent = getParam(searchParams.utm_content);
   const utmTerm = getParam(searchParams.utm_term);
-  const headersList = headers();
+  const headersList = await headers();
   const referrer = headersList.get('referer');
 
   return <SkincareConsultant alt gclid={gclid} msclkid={msclkid} utmSource={utmSource} utmMedium={utmMedium} utmCampaign={utmCampaign} utmContent={utmContent} utmTerm={utmTerm} referrer={referrer} />;

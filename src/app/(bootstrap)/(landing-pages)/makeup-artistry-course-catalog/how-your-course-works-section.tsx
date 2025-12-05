@@ -9,9 +9,9 @@ import { useScreenWidth } from '@/hooks/useScreenWidth';
 
 const iconSize = 36;
 
-type Props = {
+interface Props {
   className?: string;
-};
+}
 
 export const HowYourCourseWorksSection: FC<Props> = ({ className }) => {
   const screenWidth = useScreenWidth();

@@ -15,7 +15,7 @@ export const useEventListener = <
   handler: Handler<E>,
   element?: React.RefObject<HTMLElement | null | undefined>,
 ): void => {
-  const savedHandler = useRef<Handler<E>>();
+  const savedHandler = useRef<Handler<E>>(undefined);
 
   // Keep track of the latest handler
   useEffect(() => {

@@ -8,8 +8,8 @@ import { Pricing } from './_components/pricing';
 import { ProblemSolution } from './_components/problemSolution';
 import { Testimonials } from './_components/testimonials';
 
-const App: FC = () => {
-  const cookieStore = cookies();
+const MakeupCoachingPage: FC = async () => {
+  const cookieStore = await cookies();
   const initialSpotsCookie = cookieStore.get('spots');
 
   const initialSpots = typeof initialSpotsCookie === 'undefined' ? undefined : parseInt(initialSpotsCookie.value, 10);
@@ -26,4 +26,4 @@ const App: FC = () => {
   );
 };
 
-export default App;
+export default MakeupCoachingPage;

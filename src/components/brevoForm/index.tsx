@@ -1,14 +1,15 @@
 'use client';
 
 import 'react-phone-number-input/style.css';
-import Image, { StaticImageData } from 'next/image';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { ChangeEventHandler, FC, FormEventHandler, ReactElement } from 'react';
 import { forwardRef, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { DefaultInputComponentProps } from 'react-phone-number-input';
-import PhoneInput from 'react-phone-number-input/input';
+import type { DefaultInputComponentProps } from 'react-phone-number-input';
 import type { Country, Value } from 'react-phone-number-input/input';
+import PhoneInput from 'react-phone-number-input/input';
 import { v1 } from 'uuid';
 
 import { CurrentPageInput } from './currentPageInput';
@@ -16,7 +17,7 @@ import styles from './index.module.scss';
 import { JavasciptInput } from './javascriptInput';
 import DownloadIcon from '@/components/download.svg';
 
-type Props = {
+interface Props {
   successLocation: string;
   listId: number;
   emailTemplateId?: number;
@@ -31,11 +32,11 @@ type Props = {
   utmContent?: string;
   utmTerm?: string;
   courseCodes?: string[];
-  button?: ReactElement;
+  button?: ReactElement<any>;
   referrer: string | null;
   telephoneListId?: number;
   countryCode?: string | null;
-};
+}
 
 export const BrevoForm: FC<Props> = props => {
   const id = useId();
@@ -162,11 +163,11 @@ export const BrevoForm: FC<Props> = props => {
   );
 };
 
-type InputProps = {
+interface InputProps {
   value: Value;
   onChange: ChangeEventHandler;
   name: string;
-};
+}
 
 const InputComponent = forwardRef<HTMLInputElement, DefaultInputComponentProps>((props, ref) => {
   const { value, onChange, name } = props as InputProps;

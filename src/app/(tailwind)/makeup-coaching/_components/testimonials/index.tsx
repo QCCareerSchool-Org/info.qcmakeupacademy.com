@@ -1,10 +1,11 @@
-import Image, { StaticImageData } from 'next/image';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { type FC, memo } from 'react';
 
-import { FadeIn } from '../../../_components/fadeIn';
 import CarolynWImage from './carolyn-w.jpg';
 import IsabellaSImage from './isabella-s.jpg';
 import VioletaGImage from './violeta-g.jpg';
+import { FadeIn } from '../../../_components/fadeIn';
 
 export interface Testimonial {
   text: string;

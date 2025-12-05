@@ -3,18 +3,17 @@ import 'server-only';
 import { randomInt } from 'crypto';
 import { cookies, headers } from 'next/headers';
 
-type Data = {
+interface Data {
   testGroup: number;
   countryCode: string;
   provinceCode: string | null;
-};
+}
 
-export const getData = (): Data => {
-  const headerList = headers();
+export const getData = async (): Promise<Data> => {
+  const [ headerList, cookieStore ] = await Promise.all([headers(), cookies()]);
+
   const countryCode = headerList.get('x-vercel-ip-country') ?? 'US';
   const provinceCode = headerList.get('x-vercel-ip-country-region');
-
-  const cookieStore = cookies();
   const testGroupCookie = parseInt(cookieStore.get('testGroup')?.value ?? '', 10);
 
   const testGroup = isNaN(testGroupCookie) ? randomInt(1, 12) : testGroupCookie;

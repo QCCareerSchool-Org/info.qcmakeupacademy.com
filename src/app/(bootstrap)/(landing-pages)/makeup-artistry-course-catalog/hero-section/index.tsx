@@ -11,7 +11,7 @@ import { HeaderLogo } from '@/components/headerLogo';
 import { NathanVideo } from '@/components/nathanVideo';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 
-type Props = {
+interface Props {
   gclid?: string;
   msclkid?: string;
   utmSource?: string;
@@ -21,7 +21,7 @@ type Props = {
   utmTerm?: string;
   referrer: string | null;
   countryCode: string | null;
-};
+}
 
 const brevoListId = 9;
 const brevoEmailTemplateId = 821;

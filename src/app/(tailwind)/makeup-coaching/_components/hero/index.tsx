@@ -2,12 +2,12 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
-import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
-import { Button } from '../../../_components/button';
-import { FadeIn } from '../../../_components/fadeIn';
+import { memo, useEffect, useState } from 'react';
 
 import HeroImage from './background.jpg';
+import { Button } from '../../../_components/button';
+import { FadeIn } from '../../../_components/fadeIn';
 import { BackgroundImage } from '@/components/backgroundImage';
 
 const words = [ 'Beautiful.', 'Confident.', 'Effortlessly You.' ];

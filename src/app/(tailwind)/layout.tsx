@@ -1,4 +1,4 @@
-import { LayoutComponent } from '../serverComponent';
+import type { LayoutComponent } from '../serverComponent';
 import { Footer } from './_components/footer';
 import { Header } from './_components/header';
 

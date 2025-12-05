@@ -1,12 +1,13 @@
-import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 import { cookies } from 'next/headers';
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
-import { GeoLocation, isGeoLocation } from '../lib/geoLocation';
 import { CaptchaProvider } from './captchaProvider';
 import { GeoLocationProvider } from './geoLocation';
 import { ScreenWidthProvider } from './screenWidth';
 import { ScrollPositionProvider } from './scrollPosition';
+import type { GeoLocation } from '../lib/geoLocation';
+import { isGeoLocation } from '../lib/geoLocation';
 
 const getCookieGeoLocation = (cookieStore: ReadonlyRequestCookies): GeoLocation | undefined => {
   const cookieValue = cookieStore.get('location');
@@ -17,8 +18,8 @@ const getCookieGeoLocation = (cookieStore: ReadonlyRequestCookies): GeoLocation 
 
 const reCaptchaKey = process.env.RECAPTCHA_KEY;
 
-export const Providers: FC<PropsWithChildren> = ({ children }) => {
-  const cookieStore = cookies();
+export const Providers: FC<PropsWithChildren> = async ({ children }) => {
+  const cookieStore = await cookies();
   const cookieGeoLocation = getCookieGeoLocation(cookieStore);
 
   return (

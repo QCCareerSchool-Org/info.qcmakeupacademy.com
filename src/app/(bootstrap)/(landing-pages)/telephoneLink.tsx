@@ -1,6 +1,7 @@
 'use client';
 
-import { FC } from 'react';
+import type { FC } from 'react';
+
 import { useGeoLocation } from '@/hooks/useGeoLocation';
 import { getTelephoneNumber } from '@/lib/phone';
 

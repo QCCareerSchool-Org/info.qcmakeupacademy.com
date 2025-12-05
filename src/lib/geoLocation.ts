@@ -1,11 +1,11 @@
 import Cookies from 'js-cookie';
 
-export type GeoLocation = {
+export interface GeoLocation {
   countryCode: string;
   countryName: string;
   provinceCode: string | null;
   provinceName: string | null;
-};
+}
 
 export const getGeoLocation = async (): Promise<GeoLocation> => {
   const fetched = await fetchGeoLocation();

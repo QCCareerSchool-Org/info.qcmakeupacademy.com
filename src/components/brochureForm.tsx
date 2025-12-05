@@ -1,12 +1,12 @@
 'use client';
 
-import { useCallback, useId, useState } from 'react';
 import type { FC, FormEventHandler } from 'react';
+import { useCallback, useId, useState } from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import { useGeoLocation } from '@/hooks/useGeoLocation';
 
-export type Marketing = {
+export interface Marketing {
   gclid?: string;
   msclkid?: string;
   source?: string;
@@ -14,21 +14,21 @@ export type Marketing = {
   campaign?: string;
   content?: string;
   term?: string;
-};
+}
 
-export type DefaultValues = {
+export interface DefaultValues {
   firstName?: string;
   lastName?: string;
   emailAddress?: string;
-};
+}
 
-type Props = {
+interface Props {
   action: string;
   buttonText?: string;
   marketing?: Marketing;
   defaultValues?: DefaultValues;
   labels?: boolean;
-};
+}
 
 export const BrochureForm: FC<Props> = ({ action, buttonText = 'Get the Catalog', marketing, defaultValues, labels }) => {
   const id = useId();

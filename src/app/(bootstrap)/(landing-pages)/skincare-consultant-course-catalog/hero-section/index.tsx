@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 import { FormWrapper } from './form-wrapper';
 import HeroImage from './hero-reversed.jpg';
 import { BackgroundImage } from '@/components/backgroundImage';
 import { BrevoForm } from '@/components/brevoForm';
 
-type Props = {
+interface Props {
   alt?: boolean;
   gclid?: string;
   msclkid?: string;
@@ -16,7 +16,7 @@ type Props = {
   utmTerm?: string;
   referrer: string | null;
   countryCode?: string;
-};
+}
 
 const brevoListId = 9;
 const brevoEmailTemplateId = 821;

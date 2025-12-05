@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
-type Props = {
+interface Props {
   text: string | string[];
   name: string;
   title: string;
-};
+}
 
 export const Testimonial: FC<Props> = ({ text, name, title }) => (
   <>

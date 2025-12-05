@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Open_Sans as OpenSans, Playfair_Display as PlayfairDisplay } from 'next/font/google';
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
