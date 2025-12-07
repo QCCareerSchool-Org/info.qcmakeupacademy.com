@@ -9,6 +9,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -17,6 +18,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "allowImportingTsExtensions": true,
+    "noUncheckedIndexedAccess": true,
     "plugins": [
       {
         "name": "next"
@@ -34,10 +37,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "eslint.config.mjs",
-    "postcss.config.js",
-    "tailwind.config.js",
-    "jest.config.js",
+    "eslint.config.ts",
+    "postcss.config.mjs",
+    "jest.config.mjs",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [

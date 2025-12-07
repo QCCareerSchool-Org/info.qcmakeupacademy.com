@@ -7,12 +7,15 @@ import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
 import tseslint from 'typescript-eslint';
 
+import customPlugin from './eslint-rules/index.ts';
+
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   eslint.configs.recommended,
   tseslint.configs.strictTypeChecked,
   tseslint.configs.stylisticTypeChecked,
+  customPlugin.configs.recommended,
   {
     languageOptions: {
       parser: tseslint.parser,
@@ -20,22 +23,11 @@ const eslintConfig = defineConfig([
         projectService: true,
       },
     },
-  },
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    '.next/**',
-    'out/**',
-    'build/**',
-    'next-env.d.ts',
-    // custom
-    'public',
-  ]),
-  {
     plugins: {
       'react': reactPlugin,
       '@stylistic': stylistic,
       'import': importPlugin,
+      'custom': customPlugin,
     },
     settings: {
       // Needed for TS path + extension resolution
@@ -74,6 +66,7 @@ const eslintConfig = defineConfig([
       'no-loop-func': 'off',
       'no-magic-numbers': 'off',
       'no-multi-spaces': 'error',
+      // 'no-restricted-globals': [ 'error', { name: 'window', message: 'Use `getWindow()`' } ],
       'no-return-assign': 'error',
       'no-return-await': 'off',
       'no-script-url': 'error',
@@ -129,9 +122,7 @@ const eslintConfig = defineConfig([
       'no-whitespace-before-property': 'error',
       'object-curly-newline': 'error',
       'object-curly-spacing': 'off',
-      'object-property-newline': [ 'error', {
-        allowAllPropertiesOnSameLine: true,
-      } ],
+      'object-property-newline': [ 'error', { allowAllPropertiesOnSameLine: true } ],
       'object-shorthand': 'error',
       'one-var': [ 'error', 'never' ],
       'padding-line-between-statements': [ 'error', {
@@ -194,7 +185,8 @@ const eslintConfig = defineConfig([
       '@typescript-eslint/no-loop-func': 'error',
       '@typescript-eslint/no-magic-numbers': 'off',
       '@typescript-eslint/no-shadow': 'error',
-      // '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unnecessary-condition': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-use-before-define': 'off',
       '@typescript-eslint/require-await': 'warn',
       '@typescript-eslint/return-await': 'error',
@@ -276,6 +268,16 @@ const eslintConfig = defineConfig([
       } ],
     },
   },
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+    // custom
+    'public',
+  ]),
   {
     ignores: [ 'node_modules/**', '.next/**', 'out/**', 'build/**', 'public/**', 'next-env.d.ts' ],
   },
