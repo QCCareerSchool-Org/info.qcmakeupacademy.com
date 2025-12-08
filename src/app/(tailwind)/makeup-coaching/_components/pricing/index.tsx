@@ -83,13 +83,13 @@ export const Pricing: FC<Props> = memo(({ initialSpots, buttonHref }) => {
               </div>
               <div className="grid grid-cols-[1fr_auto] items-end">
                 <span className="font-sans font-bold text-charcoal/80 uppercase tracking-wider">Your Investment</span>
-                <span className="font-serif font-bold text-charcoal/80 decoration-1 text-2xl">$350</span>
+                <span className="font-serif font-bold text-charcoal/80 decoration-1 text-2xl">$398</span>
               </div>
             </div>
 
             <div className="space-y-4">
               <Button fullWidth variant="primary" className="text-lg md:text-xl py-5">
-                <span className="text-white/80 font-normal">Start Now For Only <span className="font-bold"><span className="line-through">$850</span> <span className="text-white">$350</span></span></span>
+                <span className="text-white/80 font-normal">Start Now For Only <span className="font-bold"><span className="line-through">$850</span> <span className="text-white">$398</span></span></span>
               </Button>
             </div>
 

@@ -18,9 +18,9 @@ interface Fundamental {
 }
 
 const methods: IconTitleDesc[] = [
-  { icon: Play, title: 'Professional Video Lessons', desc: 'Complete at your own pace.' },
-  { icon: Star, title: 'Real-Life Applications', desc: 'Build skills & confidence.' },
-  { icon: User, title: 'Personalized Coaching', desc: 'Create a routine fitting your life.' },
+  { icon: Play, title: 'Professional-level video lessons', desc: 'to follow along with and complete at your own pace' },
+  { icon: Star, title: 'Real-life makeup applications', desc: 'to build up the skills and confidence to create any look' },
+  { icon: User, title: 'Personalized coaching', desc: 'to create a routine that fits your life and highlights your natural beauty' },
 ];
 
 const fundamentals: Fundamental[] = [
