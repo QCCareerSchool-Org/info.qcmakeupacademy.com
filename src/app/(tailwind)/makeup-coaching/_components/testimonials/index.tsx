@@ -38,7 +38,7 @@ export const Testimonials: FC = memo(() => (
     <BackgroundImage src={HeroImage} />
     <div className="max-w-6xl mx-auto relative">
       <FadeIn className="text-center mb-16">
-        <h2 className="font-serif text-3xl md:text-4xl text-white">Stories of Confidence</h2>
+        <h2 className="font-serif text-3xl md:text-4xl text-white">Testimonials</h2>
       </FadeIn>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
