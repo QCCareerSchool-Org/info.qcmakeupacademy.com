@@ -1,0 +1,12 @@
+.reCaptchaDisclaimer {
+  color: #828282;
+  a:link, a:hover {
+    color: #828282;
+  }
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  @media (width >= 64rem) {
+    text-align: left;    
+  }
+}

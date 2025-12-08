@@ -8,6 +8,8 @@ import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
 import { Tiktok } from '@/components/scripts/tiktok';
 import { Providers } from '@/providers';
 
+import './layout.scss';
+
 export const metadata: Metadata = {
   title: 'QC Makeup Academy',
 };

@@ -5,13 +5,16 @@ import { TelephoneLink } from './telephoneLink';
 
 export const Footer: FC = () => (
   <footer>
-    <section className="bg-black text-white">
-      <div className="container text-center">
+    <section className="bg-black text-white text-center">
+      <div className="container">
         <h2 className="h3 mb-3">Have Questions? Give us a Call!</h2>
         <p className={styles.phoneNumber}><TelephoneLink /></p>
         <p className={`${styles.small} ${styles.muted}`}>&copy; {new Date().getFullYear()} QC Makeup Academy</p>
         <p className={styles.small}><a style={{ color: 'inherit', textDecoration: 'none' }} href="https://www.qcmakeupacademy.com/terms.html">Privacy Policy</a></p>
       </div>
+      <small className={styles.reCaptchaDisclaimer}>
+        This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </small>
     </section>
   </footer>
 );
