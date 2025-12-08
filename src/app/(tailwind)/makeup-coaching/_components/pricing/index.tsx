@@ -39,8 +39,7 @@ export const Pricing: FC<Props> = memo(({ initialSpots, buttonHref }) => {
     if (spots <= 15) { return; }
 
     // Randomized delay
-    // The first time is faster
-    const delay = firstTimeout.current ? (Math.floor(Math.random() * 4_000) + 4_000) : (Math.floor(Math.random() * 60_000) + 90_000);
+    const delay = getDelay(maxSpots - spots + 1);
 
     firstTimeout.current = false;
 
@@ -154,3 +153,16 @@ export const Pricing: FC<Props> = memo(({ initialSpots, buttonHref }) => {
 });
 
 Pricing.displayName = 'Pricing';
+
+const getDelay = (iteration: number): number => {
+  // The first delay is short, to increase the chance that the visitor sees the change
+  if (iteration === 1) {
+    return Math.floor(Math.random() * 4_000) + 4_000;
+  }
+  // the second delay is longer
+  if (iteration === 2) {
+    return Math.floor(Math.random() * 60_000) + 90_000;
+  }
+  // the remaining delays are even longer
+  return Math.floor(Math.random() * 120_000) + 180_000; ;
+};
