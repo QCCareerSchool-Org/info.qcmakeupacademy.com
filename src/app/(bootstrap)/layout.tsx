@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react';
 
 import './globals.scss';
 
-const RootLayout: FC<PropsWithChildren> = async ({ children }) => (
+const RootLayout: FC<PropsWithChildren> = ({ children }) => (
   <>
     {children}
   </>

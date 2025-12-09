@@ -8,4 +8,6 @@ interface Props {
   height: number;
 }
 
-export const Logo: FC<Props> = ({ height }) => <Image src={LogoImage as StaticImageData} height={height} className="img-fluid" alt="QC Makeup Academy" />;
+export const Logo: FC<Props> = ({ height }) => {
+  return <Image src={LogoImage as StaticImageData} height={height} className="img-fluid" alt="QC Makeup Academy" />;
+};

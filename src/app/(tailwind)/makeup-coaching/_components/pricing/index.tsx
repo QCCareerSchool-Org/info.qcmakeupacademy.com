@@ -98,7 +98,7 @@ export const Pricing: FC<Props> = memo(({ initialSpots, buttonHref }) => {
               <div className="text-center md:text-left">
                 <h4 className="font-serif text-lg font-bold text-charcoal">Risk-Free Guarantee</h4>
                 <p className="font-sans font-light text-sm text-charcoal/70 mt-1">
-                  Try the program for 7 days. If you don't feel more confident, get a <span className="font-semibold">full refund—no questions asked.</span>
+                  Try the program for 7 days. If you complete it and don't feel more confident using personalized techniques tailored to you, we'll give you a <span className="font-semibold">full refund</span>.
                 </p>
               </div>
             </div>
@@ -157,12 +157,12 @@ Pricing.displayName = 'Pricing';
 const getDelay = (iteration: number): number => {
   // The first delay is short, to increase the chance that the visitor sees the change
   if (iteration === 1) {
-    return Math.floor(Math.random() * 4_000) + 4_000;
+    return Math.floor(Math.random() * 4_000) + 4_000; // 4 to 8 seconds
   }
   // the second delay is longer
   if (iteration === 2) {
-    return Math.floor(Math.random() * 60_000) + 90_000;
+    return Math.floor(Math.random() * 60_000) + 90_000; // 90 to 150 seconds
   }
   // the remaining delays are even longer
-  return Math.floor(Math.random() * 120_000) + 180_000; ;
+  return Math.floor(Math.random() * 120_000) + 180_000; // 3 to 5 minutes
 };

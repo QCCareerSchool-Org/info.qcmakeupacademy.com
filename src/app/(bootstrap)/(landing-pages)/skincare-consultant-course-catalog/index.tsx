@@ -7,6 +7,7 @@ import { HowYourCourseWorksSection } from './how-your-course-works-section';
 import { StartTodaySection } from './start-today-section';
 import { TestimonialsSection } from './testimonials-section';
 import { VideoSection } from './video-section';
+import { BrevoForm } from '@/components/brevoForm';
 import { getData } from '@/lib/getData';
 
 interface Props {
@@ -21,12 +22,32 @@ interface Props {
   referrer: string | null;
 }
 
+const brevoListId = 9;
+const brevoEmailTemplateId = 821;
+
 export const SkincareConsultant: FC<Props> = async props => {
   const { countryCode } = await getData();
 
   return (
     <>
-      <HeroSection alt={props.alt} gclid={props.gclid} msclkid={props.msclkid} utmSource={props.utmSource} utmMedium={props.utmMedium} utmCampaign={props.utmCampaign} utmContent={props.utmContent} utmTerm={props.utmTerm} referrer={props.referrer} countryCode={countryCode} />
+      <HeroSection alt={props.alt}>
+        <BrevoForm
+          successLocation={`${process.env.NEXT_PUBLIC_HOST ?? 'https://www.qcmakeupacademy.com'}/thank-you-learn-makeup-online`}
+          listId={brevoListId}
+          emailTemplateId={brevoEmailTemplateId}
+          gclid={props.gclid}
+          msclkid={props.msclkid}
+          utmSource={props.utmSource}
+          utmMedium={props.utmMedium}
+          utmCampaign={props.utmCampaign}
+          utmContent={props.utmContent}
+          utmTerm={props.utmTerm}
+          placeholders
+          referrer={props.referrer}
+          telephoneListId={59}
+          countryCode={countryCode}
+        />
+      </HeroSection>
       <VideoSection />
       <CertificationSection />
       <HowYourCourseWorksSection />
