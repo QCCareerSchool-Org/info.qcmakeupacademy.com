@@ -34,13 +34,13 @@
   "include": [
     "next-env.d.ts",
     "svg-override.d.ts",
+    "postcss.config.mjs",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
     "**/*.mjs",
     ".next/types/**/*.ts",
-    "eslint.config.ts",
-    "postcss.config.mjs",
-    "jest.config.mjs",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
