@@ -20,7 +20,7 @@ const MakeupCoachingPage: FC = async () => {
   const initialSpotsCookie = cookieStore.get('spots');
 
   const initialSpots = typeof initialSpotsCookie === 'undefined' ? undefined : parseInt(initialSpotsCookie.value, 10);
-  const enrollmentHref = 'https://enroll.qcmakeupacademy.com/makeup-coaching';
+  const enrollmentHref = 'https://enroll.qcmakeupacademy.com/makeup-coaching-50-off';
 
   return (
     <>
