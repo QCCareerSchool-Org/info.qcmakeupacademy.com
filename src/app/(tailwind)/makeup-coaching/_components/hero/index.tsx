@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import Link from 'next/link';
 import type { FC } from 'react';
 import { memo, useEffect, useState } from 'react';
 
@@ -12,11 +13,11 @@ import { BackgroundImage } from '@/components/backgroundImage';
 
 const words = [ 'Beautiful.', 'Confident.', 'Effortlessly You.' ];
 
-const handleClick = (): void => {
-  document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+interface Props {
+  href: string;
 };
 
-export const Hero: FC = memo(() => {
+export const Hero: FC<Props> = memo(({ href }) => {
   const [ index, setIndex ] = useState(0);
 
   // rotate through the words
@@ -73,9 +74,11 @@ export const Hero: FC = memo(() => {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <Button variant="primary" onClick={handleClick}>
-              Secure Your Spot
-            </Button>
+            <Link href={href}>
+              <Button variant="primary">
+                Secure Your Spot
+              </Button>
+            </Link>
           </FadeIn>
         </div>
       </div>

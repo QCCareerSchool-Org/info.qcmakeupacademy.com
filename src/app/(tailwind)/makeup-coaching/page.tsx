@@ -25,7 +25,7 @@ const MakeupCoachingPage: FC = async () => {
   return (
     <>
       <Header buttonHref={enrollmentHref} />
-      <Hero />
+      <Hero href={enrollmentHref} />
       <ProblemSolution />
       <Instructor />
       <Curriculum />
