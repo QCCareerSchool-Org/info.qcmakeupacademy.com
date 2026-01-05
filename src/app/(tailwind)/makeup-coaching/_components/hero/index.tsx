@@ -11,7 +11,7 @@ import { Button } from '../../../_components/button';
 import { FadeIn } from '../../../_components/fadeIn';
 import { BackgroundImage } from '@/components/backgroundImage';
 
-const words = [ 'Beautiful.', 'Confident.', 'Effortlessly You.' ];
+const words = [ 'Beautiful.', 'Confident.', 'Effortlessly You.' ] as const;
 
 interface Props {
   href: string;
