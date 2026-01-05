@@ -47,7 +47,7 @@ export const Header: FC<Props> = ({ buttonHref, buttonContent = 'Get the Catalog
             {screenWidth >= 400 && <Logo height={18} />}
             {buttonHref
               ? <Link href="#"><button className="btn btn-primary btn-sm py-2 rounded-0">{buttonContent}</button></Link>
-              : <ScrollLink smooth to="top"><button className="btn btn-primary btn-sm py-2 rounded-0">{buttonContent}</button></ScrollLink>
+              : <ScrollLink smooth duration={300} to="top"><button className="btn btn-primary btn-sm py-2 rounded-0">{buttonContent}</button></ScrollLink>
             }
           </div>
         </div>
