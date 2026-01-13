@@ -36,8 +36,8 @@ export const getAddress = (countryCode: string): string[] => {
       ];
     case 'US':
       return [
-        'Suite 450',
-        '1 Research Court',
+        '402 King Farm Blvd',
+        'Ste 125 #1148',
         'Rockville, MD 20850',
       ];
     default: // like CA, but with the country
