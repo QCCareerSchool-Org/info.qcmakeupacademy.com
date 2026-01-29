@@ -29,13 +29,13 @@ export const Hero: FC = memo(() => (
 
         <FadeIn delay={0.1}>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-8xl leading-[1.1] text-white mb-8">
-            Learn Makeup from a Celebrity Makeup Artist.
+            Learn from a Celebrity Makeup Artist
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.2}>
           <p className="font-sans text-lg md:text-xl font-light text-white/90 max-w-lg leading-relaxed mb-10 border-l-2 border-white/30 pl-6">
-            Look and feel your best every day.
+            Get personalized makeup coaching to look and feel your best.
           </p>
         </FadeIn>
       </div>
