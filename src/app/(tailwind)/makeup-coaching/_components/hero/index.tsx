@@ -22,8 +22,8 @@ export const Hero: FC = memo(() => (
     <div className="max-w-7xl mx-auto w-full z-10 relative h-full flex items-center">
       <div className="max-w-4xl">
         <FadeIn>
-          <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/80 mb-6 block">
-            QC Makeup Academy
+          <span className="text-sm font-bold tracking-[0.3em] uppercase text-white/80 mb-6 block">
+            Elevate Your Look
           </span>
         </FadeIn>
 
