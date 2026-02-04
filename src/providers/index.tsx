@@ -1,36 +1,29 @@
-import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
-import { cookies } from 'next/headers';
 import type { FC, PropsWithChildren } from 'react';
 
 import { CaptchaProvider } from './captchaProvider';
-import { GeoLocationProvider } from './geoLocation';
+import { IPProvider } from './ipProvider';
 import { ScreenWidthProvider } from './screenWidth';
 import { ScrollPositionProvider } from './scrollPosition';
-import type { GeoLocation } from '../lib/geoLocation';
-import { isGeoLocation } from '../lib/geoLocation';
-
-const getCookieGeoLocation = (cookieStore: ReadonlyRequestCookies): GeoLocation | undefined => {
-  const cookieValue = cookieStore.get('location');
-  if (cookieValue && isGeoLocation(cookieValue.value)) {
-    return cookieValue.value;
-  }
-};
+import { UserValuesProvider } from './userValuesProvider';
+import type { UserValues } from '@/domain/userValues';
 
 const reCaptchaKey = process.env.RECAPTCHA_KEY;
 
-export const Providers: FC<PropsWithChildren> = async ({ children }) => {
-  const cookieStore = await cookies();
-  const cookieGeoLocation = getCookieGeoLocation(cookieStore);
+interface Props {
+  userValues?: UserValues;
+  clientIp: string | null;
+}
 
-  return (
-    <CaptchaProvider reCaptchaKey={reCaptchaKey}>
-      <ScrollPositionProvider>
-        <ScreenWidthProvider>
-          <GeoLocationProvider storedValue={cookieGeoLocation}>
+export const Providers: FC<PropsWithChildren<Props>> = ({ children, userValues, clientIp }) => (
+  <UserValuesProvider {...userValues}>
+    <IPProvider clientIp={clientIp}>
+      <ScreenWidthProvider>
+        <ScrollPositionProvider>
+          <CaptchaProvider reCaptchaKey={reCaptchaKey}>
             {children}
-          </GeoLocationProvider>
-        </ScreenWidthProvider>
-      </ScrollPositionProvider>
-    </CaptchaProvider>
-  );
-};
+          </CaptchaProvider>
+        </ScrollPositionProvider>
+      </ScreenWidthProvider>
+    </IPProvider>
+  </UserValuesProvider>
+);
