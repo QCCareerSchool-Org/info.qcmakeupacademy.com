@@ -1,20 +1,3 @@
-const isProd = process.env.NODE_ENV === 'production';
-
-/** @type {import('@fullhuman/postcss-purgecss').UserDefinedOptions} */
-const purgeCssOptions = {
-  content: [
-    './src/app/**/*.{js,ts,jsx,tsx}',
-    './src/pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
-    './node_modules/react-bootstrap/**/*.js',
-  ],
-  safelist: {
-    deep: [ /modal-/u, /show/u, /fade/u, /nav/u ],
-    greedy: [ /^Toastify/u, /^react-multi-carousel/u, /^react-multiple-carousel/u ],
-  },
-  defaultExtractor: content => content.match(/[\w\-/:]+(?<!:)/gu) ?? [],
-};
-
 /** @type {import('postcss-preset-env').pluginOptions} */
 const postCSSPresetEnvOptions = {
   autoprefixer: { flexbox: 'no-2009' },
@@ -29,7 +12,6 @@ const postCSSConfig = {
     'autoprefixer': {},
     'postcss-flexbugs-fixes': {},
     'postcss-preset-env': postCSSPresetEnvOptions,
-    ...(isProd ? { '@fullhuman/postcss-purgecss': purgeCssOptions } : {}),
   },
 };
 
