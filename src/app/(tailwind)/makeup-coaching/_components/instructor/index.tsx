@@ -54,7 +54,7 @@ export const Instructor: FC = memo(() => {
                 Nathan Johnson isn't just a celebrity makeup artist—he's your personal guide to feeling amazing in your own skin.
               </p>
               <p>
-                With experience on red carpets, magazine shoots, and television appearances, Nathan has worked with the stars, but his true passion is helping everyday people discover their own beauty.
+                With experience on red carpets, magazine shoots, and television appearances, Nathan has worked with the stars, but his true passion is empowering everyone to discover their own beauty.
               </p>
               <p>
                 <span className="font-medium">Nathan believes makeup isn't about hiding flaws; it's about celebrating <em>you</em>.</span>

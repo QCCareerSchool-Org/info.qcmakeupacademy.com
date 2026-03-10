@@ -23,19 +23,19 @@ export const Hero: FC = memo(() => (
       <div className="max-w-4xl">
         <FadeIn>
           <span className="text-sm font-bold tracking-[0.3em] uppercase text-white/80 mb-6 block">
-            Elevate Your Look
+            Elevate Your Look with 
           </span>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-8xl leading-[1.1] text-white mb-8">
-            Learn from a Celebrity Makeup Artist
+            Made-for-You Makeup Lessons
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.2}>
           <p className="font-sans text-lg md:text-xl font-light text-white/90 max-w-lg leading-relaxed mb-10 border-l-2 border-white/30 pl-6">
-            Get personalized makeup coaching to look and feel your best.
+            Learn makeup that flatters your features & get two personalized coaching sessions.
           </p>
         </FadeIn>
       </div>
