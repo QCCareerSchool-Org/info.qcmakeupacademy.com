@@ -5,7 +5,7 @@ import { BiBookAlt } from 'react-icons/bi';
 import { BsMegaphone } from 'react-icons/bs';
 import { GrCertificate } from 'react-icons/gr';
 
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenWidthContext } from '@/hooks/useScreenWidthContext';
 
 const iconSize = 36;
 
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const HowYourCourseWorksSection: FC<Props> = ({ className }) => {
-  const screenWidth = useScreenWidth();
+  const screenWidth = useScreenWidthContext();
 
   const lgOrGreater = screenWidth >= 992;
   const xlOrGreater = screenWidth >= 1200;

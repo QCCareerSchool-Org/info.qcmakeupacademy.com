@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 
 import { Logo } from './logo';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenWidthContext } from '@/hooks/useScreenWidthContext';
 
 const getImageHeight = (screenWidth: number): number => {
   if (screenWidth >= 1400) {
@@ -19,7 +19,7 @@ const getImageHeight = (screenWidth: number): number => {
 };
 
 export const HeaderLogo: FC = () => {
-  const screenWidth = useScreenWidth();
+  const screenWidth = useScreenWidthContext();
 
   return (
     <div className="text-center mb-s">

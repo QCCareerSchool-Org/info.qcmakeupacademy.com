@@ -8,10 +8,10 @@ import { BackgroundImage } from '@/components/backgroundImage';
 import { BrochureWrapper } from '@/components/brochureWrapper';
 import { HeaderLogo } from '@/components/headerLogo';
 import { NathanVideo } from '@/components/nathanVideo';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenWidthContext } from '@/hooks/useScreenWidthContext';
 
 export const HeroSection: FC<PropsWithChildren> = ({ children }) => {
-  const screenWidth = useScreenWidth();
+  const screenWidth = useScreenWidthContext();
   const lgOrGreater = screenWidth >= 992;
 
   return (

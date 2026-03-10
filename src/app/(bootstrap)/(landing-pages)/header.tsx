@@ -6,8 +6,8 @@ import { Element as ScrollElement, Link as ScrollLink } from 'react-scroll';
 
 import styles from './header.module.scss';
 import { Logo } from '@/components/logo';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
-import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { useScreenWidthContext } from '@/hooks/useScreenWidthContext';
+import { useScrollPositionContext } from '@/hooks/useScrollPositionContext';
 
 const getVisible = (screenWidth: number, scrollPosition: number): boolean => {
   if (screenWidth >= 1400) {
@@ -34,8 +34,8 @@ interface Props {
 }
 
 export const Header: FC<Props> = ({ buttonHref, buttonContent = 'Get the Catalog' }) => {
-  const screenWidth = useScreenWidth();
-  const scrollPosition = useScrollPosition();
+  const screenWidth = useScreenWidthContext();
+  const scrollPosition = useScrollPositionContext();
 
   const visible = getVisible(screenWidth, scrollPosition);
 
