@@ -1,4 +1,5 @@
-import { failure, type Result, success } from 'generic-result-type';
+import type { Result } from 'generic-result-type';
+import { failure, success } from 'generic-result-type';
 import * as jose from 'jose';
 
 const base64Secret = process.env.JWT_SECRET_BASE64;
@@ -11,7 +12,7 @@ if (secret.length !== 32) {
   throw new Error('JWE_DIR_KEY_B64 must decode to 32 bytes');
 }
 
-const urn = 'urn:qceventplanning.com:';
+const urn = 'urn:qcmakeupacademy.com:';
 const issuer = `${urn}issuer`;
 const audience = `${urn}audience`;
 
