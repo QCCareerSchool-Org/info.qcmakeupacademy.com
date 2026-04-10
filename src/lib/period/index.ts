@@ -77,8 +77,13 @@ export const span = (...ranges: readonly PeriodLike[]): Period => {
     throw new PeriodError('MISSING_ARGUMENT', 'Need at least one period');
   }
 
-  let start = ranges[0].start;
-  let end = ranges[0].end;
+  const firstRange = ranges[0];
+  if (!firstRange) {
+    throw new PeriodError('INVALID_ARGUMENT', 'Range is undefined');
+  }
+
+  let start = firstRange.start;
+  let end = firstRange.end;
 
   for (const r of ranges) {
     if (r.start < start) {
