@@ -2,7 +2,8 @@
 
 import { Play } from 'lucide-react';
 import Image from 'next/image';
-import { type FC, memo } from 'react';
+import type { FC } from 'react';
+import { memo } from 'react';
 
 import NathanImage from './nathan.jpg';
 import { FadeIn } from '../../../_components/fadeIn';
@@ -17,7 +18,7 @@ export const Instructor: FC = memo(() => {
       {/* Video Modal */}
       <Modal show={showVideo} onHide={handleHide}>
         <div className="w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl relative">
-          <video src="https://32e10f05b345e8e8e33c-c7f4ae90fffa9b9f9644d0d7851e06ec.ssl.cf1.rackcdn.com/personal-makeup-nathan.mp4" width={1024} height={567} controls autoPlay />
+          <video src="https://cdn.qccareerschool.com/makeup/personal-makeup-nathan.mp4" width={1024} height={567} controls autoPlay />
         </div>
       </Modal>
 

@@ -44,7 +44,7 @@ export const TestimonialsSection: FC = () => {
         <div className="row justify-content-center g-5">
           <div className="col-12 col-sm-10 col-md-8 col-lg-4">
             <div className="mb-3">
-              <VideoPlayer ref={video1Ref} onPlay={handleVideo1Play} src="https://32e10f05b345e8e8e33c-c7f4ae90fffa9b9f9644d0d7851e06ec.ssl.cf1.rackcdn.com/testimonial-veronika.mp4" poster={VeronikaPoster} />
+              <VideoPlayer ref={video1Ref} onPlay={handleVideo1Play} src="https://cdn.qccareerschool.com/makeup/testimonials/testimonial-veronika.mp4" poster={VeronikaPoster} />
             </div>
             <p className="lead mb-3">&ldquo;QC Makeup academy was the best choice. What I enjoyed the most was that I could learn online at my own pace&hellip;&rdquo;</p>
             <div className="d-flex align-items-center">
@@ -56,7 +56,7 @@ export const TestimonialsSection: FC = () => {
           </div>
           <div className="col-12 col-sm-10 col-md-8 col-lg-4">
             <div className="mb-3">
-              <VideoPlayer ref={video2Ref} onPlay={handleVideo2Play} src="https://32e10f05b345e8e8e33c-c7f4ae90fffa9b9f9644d0d7851e06ec.ssl.cf1.rackcdn.com/testimonial-alba.mp4" poster={AlbaPoster} />
+              <VideoPlayer ref={video2Ref} onPlay={handleVideo2Play} src="https://cdn.qccareerschool.com/makeup/testimonials/testimonial-alba.mp4" poster={AlbaPoster} />
             </div>
             <p className="lead mb-3">&ldquo;Now, I'm confident that I have the knowledge and techniques needed for me to do my dream job for the rest of my life&hellip;&rdquo;</p>
             <div className="d-flex align-items-center">
@@ -68,7 +68,7 @@ export const TestimonialsSection: FC = () => {
           </div>
           <div className="col-12 col-sm-10 col-md-8 col-lg-4">
             <div className="mb-3">
-              <VideoPlayer ref={video3Ref} onPlay={handleVideo3Play} src="https://32e10f05b345e8e8e33c-c7f4ae90fffa9b9f9644d0d7851e06ec.ssl.cf1.rackcdn.com/testimonial-jessica.mp4" poster={JessicaPoster} />
+              <VideoPlayer ref={video3Ref} onPlay={handleVideo3Play} src="https://cdn.qccareerschool.com/makeup/testimonials/testimonial-jessica.mp4" poster={JessicaPoster} />
             </div>
             <p className="lead mb-3">&ldquo;Today, I run a successful business teaching people how to apply the basics of makeup&hellip;&rdquo;</p>
             <div className="d-flex align-items-center">

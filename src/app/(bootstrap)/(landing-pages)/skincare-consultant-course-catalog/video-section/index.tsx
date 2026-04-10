@@ -2,7 +2,7 @@ import type { FC } from 'react';
 
 import PosterImage from './poster.jpg';
 
-const src = 'https://a853d550d96942a102ed-03698ba952ff3c4776ee22874ecfcda2.ssl.cf1.rackcdn.com/course-trailers/sk.mp4';
+const src = 'https://cdn.qccareerschool.com/makeup/course-trailers/sk.mp4';
 
 export const VideoSection: FC = () => (
   <section>
