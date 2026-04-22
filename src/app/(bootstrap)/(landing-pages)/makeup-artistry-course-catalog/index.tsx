@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { AboutSection } from './about-section';
 import { HeroSection } from './hero-section';
 import { HowYourCourseWorksSection } from './how-your-course-works-section';
-import KitImage from './luminous-collection-on-white-2.jpg';
+import KitImage from './luminous-collection-on-white-2-lrg.webp';
 import { StartTodaySection } from './start-today-section';
 import { TestimonialSection } from './testimonial-section';
 import { BrevoForm } from '@/components/brevoForm';
