@@ -23,7 +23,7 @@ export const Hero: FC = memo(() => (
       <div className="max-w-4xl">
         <FadeIn>
           <span className="text-sm font-bold tracking-[0.3em] uppercase text-white/80 mb-6 block">
-            Elevate Your Look with 
+            Elevate Your Look with
           </span>
         </FadeIn>
 
