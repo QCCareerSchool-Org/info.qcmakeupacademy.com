@@ -22,7 +22,7 @@ interface Props {
 }
 
 const brevoListId = 9;
-const brevoEmailTemplateId = 821;
+const brevoEmailTemplateId = 3385;
 
 export const MakeupArtistry: FC<Props> = async props => {
   const { countryCode } = await getData();
