@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@next/third-parties": "16.2.3",
+    "@next/third-parties": "16.2.9",
     "@tailwindcss/postcss": "^4.3.1",
     "big.js": "^7.0.1",
     "bootstrap": "^5.3.8",
@@ -22,11 +22,11 @@
     "jose": "^6.2.3",
     "js-cookie": "^3.0.8",
     "lucide-react": "^0.554.0",
-    "next": "16.2.3",
+    "next": "16.2.9",
     "qs": "^6.15.2",
-    "react": "19.2.5",
+    "react": "19.2.7",
     "react-awesome-reveal": "^4.3.1",
-    "react-dom": "19.2.5",
+    "react-dom": "19.2.7",
     "react-google-recaptcha-v3": "^1.11.0",
     "react-icons": "^5.6.0",
     "react-phone-number-input": "^3.4.17",
@@ -52,14 +52,14 @@
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^24.13.2",
     "@types/qs": "^6.15.1",
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@types/react-scroll": "^1.8.10",
     "@types/uuid": "^10.0.0",
     "autoprefixer": "^10.5.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.39.4",
-    "eslint-config-next": "16.2.3",
+    "eslint-config-next": "16.2.9",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
     "jest": "^30.4.2",
@@ -75,7 +75,7 @@
     "typescript-eslint": "^8.62.0"
   },
   "overrides": {
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3"
   }
 }
