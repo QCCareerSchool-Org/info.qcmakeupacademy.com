@@ -7,7 +7,7 @@ import { HowYourCourseWorksSection } from './how-your-course-works-section';
 import KitImage from './luminous-collection-on-white-2-lrg.webp';
 import { StartTodaySection } from './start-today-section';
 import { TestimonialSection } from './testimonial-section';
-import { BrevoForm } from '@/components/brevoForm';
+import { ActiveCampaignForm } from '@/components/activeCampaignForm';
 import { getData } from '@/lib/getData';
 
 interface Props {
@@ -21,19 +21,16 @@ interface Props {
   referrer: string | null;
 }
 
-const brevoListId = 9;
-const brevoEmailTemplateId = 3385;
-
 export const MakeupArtistry: FC<Props> = async props => {
   const { countryCode } = await getData();
 
   return (
     <>
       <HeroSection>
-        <BrevoForm
+        <ActiveCampaignForm
           successLocation={`${process.env.NEXT_PUBLIC_HOST ?? 'https://www.qcmakeupacademy.com'}/thank-you-learn-makeup-online`}
-          listId={brevoListId}
-          emailTemplateId={brevoEmailTemplateId}
+          requiredIds={[ 48n ]}
+          optionalIds={[ 35n ]}
           gclid={props.gclid}
           msclkid={props.msclkid}
           utmSource={props.utmSource}
